@@ -1,7 +1,7 @@
 package LawFirmProject;
 
 public class LawFirm {
-	private String nameOfFrime;
+	private String nameOfFirm;
 	private String location;
 	private int yearFounded;
 	private String ownerName;
@@ -12,9 +12,9 @@ public class LawFirm {
 	private Lawyer [] lawyers;
 	
 	
-	public LawFirm(String nameOfFrime , String location , int yearFounded , private String ownerName , int numberOfLawyers , int numberOfCases , double earningsFromLawyers) {
+	public LawFirm(String nameOfFirm , String location , int yearFounded , private String ownerName , int numberOfLawyers , int numberOfCases , double earningsFromLawyers) {
 	
-this.nameOfFrime = nameOfFrime;
+this.nameOfFirm = nameOfFirm;
 this.location = location;
 this.yearFounded = yearFounded;
 this.ownerName = ownerName;
@@ -25,8 +25,8 @@ lawyers = new Lawyer [numberOfLawyers];
 }
 
 	
-	public String getNameOfFrime() {
-		return nameOfFrime;
+	public String getNameOfFirm() {
+		return nameOfFirm;
 	}
 	
 	public String getLocation() {
@@ -56,8 +56,8 @@ lawyers = new Lawyer [numberOfLawyers];
 		return earningsFromLawyers;
 	}
 	
-	public void setNameOfFrime(String nameOfFrime) {
-		this.nameOfFrime = nameOfFrime;
+	public void setNameOfFirm(String nameOfFirm) {
+		this.nameOfFirm = nameOfFirm;
 	}
 	public void setLocation(String location) {
 		this.location = location;
@@ -80,6 +80,6 @@ lawyers = new Lawyer [numberOfLawyers];
 	
 	
 	public String toString() {
-		return "Name of firm is: " + nameOfFrime + "\nLocation: " + location + " Year founding: " + yearFounded + "\nOwner name:" + ownerName + "\nNumber of Cases: " + numberOfCases + "Earnings From lawyers = " + earningsFromLawyers;
+		return "Name of firm is: " + nameOfFirm + "\nLocation: " + location + " Year founding: " + yearFounded + "\nOwner name:" + ownerName + "\nNumber of Cases: " + numberOfCases + "Earnings From lawyers = " + earningsFromLawyers;
 	}
 }
