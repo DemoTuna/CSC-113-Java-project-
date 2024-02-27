@@ -1,7 +1,7 @@
 package LawFirmProject;
 
 // Abstract class representing a legal case
-public class Case {
+public abstract class Case {
 // Fields to store case information
 	protected String caseNumber;      
 	protected char status;           // Status of the case:Active (A), Pending (P), Closed (C)
