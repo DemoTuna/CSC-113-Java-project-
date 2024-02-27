@@ -68,6 +68,30 @@ public class Document {
 		this.accessLevel = accessLevel;
 	}
 	
+	 // toString method
+    
+	 public String toString() {
+	    
+	  String accessLevelString;
+	  switch (accessLevel) {
+	        case 'P':
+	            accessLevelString = "Public";
+	            break;
+	        case 'C':
+	            accessLevelString = "Confidential";
+	            break;
+	        case 'R':
+	            accessLevelString = "Restricted";
+	            break;
+	        default:
+	            accessLevelString = "Unknown";
+	            break;
+	    }
+	        return "Tracking Number: " + trackingNumber + "\nTitle: " + title + "\nType: " + type + "\nContent: " + content + "\nAccess Level: " + accessLevelString;  
+	       }
+	
+
+	
 	
 	
 
