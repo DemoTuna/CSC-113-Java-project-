@@ -14,6 +14,7 @@ public class Lawyer {
 	private int numberOfCasesLost;
 	private double baseSalary ;
 	
+	
 	//public Case[] cases ;
 	
 	
