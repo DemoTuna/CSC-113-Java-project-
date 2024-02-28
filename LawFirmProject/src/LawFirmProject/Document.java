@@ -2,11 +2,14 @@ package LawFirmProject;
 
 public class Document {
 
+	//attributes
+	
 	private String trackingNumber ;
 	private String title ;
 	private char type ;   // Document type : Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E)  
 	private String content ;
 	private char accessLevel ; // Document Access Level :  Public (P) , Confidential (C) , Restricted (R)  
+	
 	
 	// parameterized constructor 
 	
@@ -60,7 +63,7 @@ public class Document {
 	            break;
 	  }
 	  
-	        return "Tracking Number: " + trackingNumber + "\nTitle: " + title + "\nType: " + typeString + "\nContent: " + content + "\nAccess Level: " + accessLevelString;  
+	        return "Document Info :- \nTracking Number: " + trackingNumber + "\nTitle: " + title + "\nType: " + typeString + "\nContent: " + content + "\nAccess Level: " + accessLevelString;  
 	       }
 	
 
