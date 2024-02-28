@@ -4,10 +4,11 @@ public class Document {
 
 	private String trackingNumber ;
 	private String title ;
-	private char type ;
+	private char type ;   // Document type : Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E)  
 	private String content ;
-	private char accessLevel ;
+	private char accessLevel ; // Document Access Level :  Public (P) , Confidential (C) , Restricted (R)  
 	
+	// parameterized constructor 
 	
 	public Document(String trackingNumber, String title, char type, String content, char accessLevel) {
 		
@@ -18,55 +19,7 @@ public class Document {
 		this.accessLevel = accessLevel;
 	}
 
-
-	public String getTrackingNumber() {
-		return trackingNumber;
-	}
-
-
-	public void setTrackingNumber(String trackingNumber) {
-		this.trackingNumber = trackingNumber;
-	}
-
-
-	public String getTitle() {
-		return title;
-	}
-
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-
-	public char getType() {
-		return type;
-	}
-
-
-	public void setType(char type) {
-		this.type = type;
-	}
-
-
-	public String getContent() {
-		return content;
-	}
-
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-
-	public char getAccessLevel() {
-		return accessLevel;
-	}
-
-
-	public void setAccessLevel(char accessLevel) {
-		this.accessLevel = accessLevel;
-	}
+    
 	
 	 // toString method
     
@@ -87,10 +40,80 @@ public class Document {
 	            accessLevelString = "Unknown";
 	            break;
 	    }
-	        return "Tracking Number: " + trackingNumber + "\nTitle: " + title + "\nType: " + type + "\nContent: " + content + "\nAccess Level: " + accessLevelString;  
+	  
+	  String typeString ;
+	  switch (type) {
+	        case 'B':
+	        	typeString = "Legal Brief";
+	            break;
+	        case 'C':
+	        	typeString = "Contract";
+	            break;
+	        case 'T':
+	        	typeString = "Court File";
+	            break;
+	        case 'E':
+	        	typeString = "Evidence";
+	            break;
+	        default:
+	        	typeString = "Unknown";
+	            break;
+	  }
+	  
+	        return "Tracking Number: " + trackingNumber + "\nTitle: " + title + "\nType: " + typeString + "\nContent: " + content + "\nAccess Level: " + accessLevelString;  
 	       }
 	
 
+		// setters & getters
+	 
+		public String getTrackingNumber() {
+			return trackingNumber;
+		}
+
+
+		public void setTrackingNumber(String trackingNumber) {
+			this.trackingNumber = trackingNumber;
+		}
+
+
+		public String getTitle() {
+			return title;
+		}
+
+
+		public void setTitle(String title) {
+			this.title = title;
+		}
+
+
+		public char getType() {
+			return type;
+		}
+
+
+		public void setType(char type) {
+			this.type = type;
+		}
+
+
+		public String getContent() {
+			return content;
+		}
+
+
+		public void setContent(String content) {
+			this.content = content;
+		}
+
+
+		public char getAccessLevel() {
+			return accessLevel;
+		}
+
+
+		public void setAccessLevel(char accessLevel) {
+			this.accessLevel = accessLevel;
+		}
 	
 	
 	
