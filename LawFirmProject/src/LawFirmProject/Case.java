@@ -1,47 +1,109 @@
 package LawFirmProject;
 
-// Abstract class representing a legal case
+
+
 public abstract class Case {
-// Fields to store case information
-	protected String caseNumber;      
-	protected char status;           // Status of the case:Active (A), Pending (P), Closed (C)
-	protected double legalExpenses;
-   protected Document document;
+
+  // Attributes
+   
+   protected String caseNumber;      
+   protected char status;           // Status of the case:Active (A), Pending (P), Closed (C)
+   protected double legalExpenses;
+   protected Client client;
+   protected Document[] documents;
+   protected int numberOfDocuments;
 
 
 	
-   // Constructor to initialize the case fields
-	public Case(String caseNumber, char status, double legalExpenses , Document document) {
+   //Parameterized constructor
+   
+    public Case(String caseNumber, char status, Client client,int size) {
     this.caseNumber = caseNumber;
     this.status = status;
-    this.legalExpenses = legalExpenses;
-    this.document=document;    
-}
-	
-	
-	// Abstract method to calculate legal expenses (to be implemented by subclasses)
-	public abstract double calculateLegalExpenses();
+    this.client=client; 
+    this.documents=new Document[size];
+    this.legalExpenses = 0; 
+    this.numberOfDocuments=0;
+   }
    
-	// Method to display case information
-	public void display(){
-       System.out.println("Case Number: " + caseNumber);
+   // Method to add a document to the case
+   public void addDocument(Document d){
+     if(numberOfDocuments<documents.length){
+         documents[numberOfDocuments]=d;
+         numberOfDocuments++;
+     }
+     else
+       System.out.println("Cannot add more documents.");
+   
+   }
+   
+   // Method to search for a document by its tracking number
+   public int searchDocument(int trackingNumber){
+     for(int i=0;i<numberOfDocuments;i++){
+         if(documents[i].getTrackingNumber()==trackingNumber)
+              return i;
+         }
+              return -1;
+     
+   
+   }
+   
+   
+   // Method to remove a document 
+   public void removeDocument(int id){
+      int index=searchDocument(id);
+      if(index==-1)
+           System.out.println("Case is not found.");
+       else{
+           documents[index]=documents[numberOfDocuments-1];
+           numberOfDocuments--;
+           
+           }
+   
+   
+   }
+	
+	
+	   
+   public abstract double calculateLegalExpenses();     // Abstract method to calculate legal expenses (to be implemented by subclasses).
   
-        System.out.print("Status: ");
-        switch (status) {
-            case 'A':
-                System.out.println("Active");
-                break;
-            case 'P':
-                System.out.println("Pending");
-                break;
-            case 'C':
-                System.out.println("Closed");
-                break;
-            default:
-                System.out.println("Unknown"); // Print "Unknown" for any other status code
-        }
-        System.out.println("Legal Expenses: " + legalExpenses);     
+   
+   public abstract int calculateCompletionTime();       //Abstract method to calculates the estimated completion time for the case.
+   
+   // toString method 
+   
+   public String toString() {
+    String statusString;
+     switch (status) {
+        case 'A':
+            statusString = "Active";
+            break;
+        case 'P':
+            statusString = "Pending";
+            break;
+        case 'C':
+            statusString = "Closed";
+            break;
+        default:
+            statusString = "Unknown";
+            break;
+    }
+    String documentsInfo = "";
+    for (int i = 0; i < numberOfDocuments; i++) {
+           documentsInfo +=(i+1)+" "+ documents[i] + "\n";
+}    
+
+    return "Case Number: " + caseNumber + ", Status: " + statusString  + "\n " + client +"\n" + documentsInfo;
+    
+}
+ 
+       
+           
+        
     }
     
+        
+  
+    
 
-}
+     
