@@ -1,49 +1,113 @@
 package LawFirmProject;
 
-// Concrete subclass representing a civil cases
-public class Civil extends Case{
-private char civilType;   //'F' for Family Law, 'O' for Property Law, 'C' for Contract Law
-   
-	// Constructor to initialize the civil case fields
-	public Civil(String caseNumber, char status, double legalExpenses , Document document , char civilType ) {
-        super(caseNumber, status, legalExpenses, document);  // Call superclass constructor
-        this.civilType = civilType;
-    }
 
-   // Getter and setter mathods for civil type
-	public char getCivilType() {
-	   return civilType;
-	}
-	
-	public void setCivilType(char civilType) {
-	   this.civilType = civilType;
-	}
+public class Civil extends Case{
+
+        //attributes
+   
+	private char civilType;   // Family Law (F), Property Law (O), or Contract Law (C)
+   
+   
+	// parameterized constructor
+   
+	public Civil(String caseNumber, char status, Client client ,int size, char civilType ) {
+        super(caseNumber, status, client,size);  // Call superclass constructor
+        this.civilType = civilType;
+       }
+
+ 
 
 	// Override method to calculate legal expenses for civil cases
 	@Override
 	public  double calculateLegalExpenses() {
-	  return legalExpenses+(legalExpenses*0.50);
-	}
-   
-   // Override method to display civil case information
-	public void display(){
-	  super.display();     // Call display method of the superclass Case
-     System.out.println(document);
-      System.out.print("Civil Type: ");
-          if (civilType == 'F') {
-              System.out.println("Family Law");
-          } else if (civilType == 'O') {
-              System.out.println("Property Law");
-          } else if (civilType == 'C') {
-              System.out.println("Contract Law");
-          } else {
-              System.out.println("Unknown"); // Print "Unknown" for any other char
-          }
+        double totalLegalExpenses = 0;
+    
+	       if (civilType == 'F') 
+	            totalLegalExpenses += 10000;
+	         else if (civilType == 'O') 
+	            totalLegalExpenses += 5000;
+	         else if (civilType == 'C') 
+	            totalLegalExpenses += 7000;
+	  
+	
+	       if (status == 'P') 
+	            totalLegalExpenses += (totalLegalExpenses * 0.2); // Increase legal expenses by 20% for pending cases
+	         else if (status == 'C') 
+	            totalLegalExpenses -= (totalLegalExpenses * 0.2); // Decrease legal expenses by 20% for closed cases
+	            
+	         super.legalExpenses = totalLegalExpenses;     
+	         return legalExpenses;
+      }
           
-           System.out.println("Calculated Legal Expenses: " + calculateLegalExpenses());
+                
+      
+   
+	   // Override method to calculate the estimated completion time for the civil case
+	   @Override
+	    public int calculateCompletionTime() {
+	    
+	        // Default completion time (in days)
+	        int completionTime = 0;
+	        
+	        switch (civilType) {
+	            case 'F':
+	                completionTime = 120; 
+	                break;
+	            case 'O':
+	                completionTime = 90; 
+	                break;
+	            case 'C':
+	                completionTime = 100; 
+	                break;
+	            default:
+	                completionTime = 90; 
+	                break;
+	        }
+	        
+	        return completionTime;
+	    }
+   
+   // Override Method to display information about the civil case
+   
+   
+	public void display(){
+   
+	  System.out.println(super.toString());     // Call display method of the superclass Case
+     
+         System.out.print("Civil Type: ");
+         switch (civilType) {
+            case 'F':
+              System.out.println("Family Law");
+              break;
+            case 'O':
+              System.out.println("Property Law");
+              break;
+            case 'C':
+              System.out.println("Contract Law");
+              break;
+            default:
+              System.out.println("Unknown");
+              break;
+     }
+          
+        System.out.println("Calculated Legal Expenses: " + calculateLegalExpenses());
+        System.out.println("Calculated Completion Time: " + calculateCompletionTime() + " days");
+}
+
+       // setters & getters
+      	public char getCivilType() {
+      	   return civilType;
+      	}
+      	
+      	public void setCivilType(char civilType) {
+      	   this.civilType = civilType;
+      	}
+       
     
 	}
    
+ 
+   
 	
-
-}
+	
+	
