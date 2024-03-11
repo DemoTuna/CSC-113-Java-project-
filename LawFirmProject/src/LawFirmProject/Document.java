@@ -2,7 +2,7 @@ package LawFirmProject;
 
 public class Document {
 
-	//attributes
+	//Attributes
 	
 	private String trackingNumber ;
 	private String title ;
@@ -11,7 +11,9 @@ public class Document {
 	private char accessLevel ; // Document Access Level :  Public (P) , Confidential (C) , Restricted (R)  
 	
 	
-	// parameterized constructor 
+	
+	
+	// Parameterized Constructor 
 	
 	public Document(String trackingNumber, String title, char type, String content, char accessLevel) {
 		
@@ -24,7 +26,7 @@ public class Document {
 
     
 	
-	 // toString method
+	 // toString Method
     
 	 public String toString() {
 	    
@@ -41,7 +43,7 @@ public class Document {
 	            break;
 	        default:
 	            accessLevelString = "Unknown";
-	            break;
+	            
 	    }
 	  
 	  String typeString ;
@@ -60,14 +62,14 @@ public class Document {
 	            break;
 	        default:
 	        	typeString = "Unknown";
-	            break;
+	           
 	  }
 	  
 	        return "Document Info :- \nTracking Number: " + trackingNumber + "\nTitle: " + title + "\nType: " + typeString + "\nContent: " + content + "\nAccess Level: " + accessLevelString;  
 	       }
 	
 
-		// setters & getters
+		// Setters & Getters
 	 
 		public String getTrackingNumber() {
 			return trackingNumber;
