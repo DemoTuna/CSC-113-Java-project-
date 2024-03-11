@@ -3,7 +3,7 @@ package LawFirmProject;
 
 public class Client {
 	
-	//attributes
+	//Attributes
 	
 	private String name ;
 	private String dayOfBirth ;
@@ -12,7 +12,9 @@ public class Client {
 	private String emailAddress ;
 	
 	
-	// parameterized constructor
+	
+	
+	// Parameterized Constructor
 	
 	public Client(String name, String dayOfBirth, String id, String phoneNumber, String emailAddress) {
 		
@@ -24,14 +26,14 @@ public class Client {
 	}
 
 
-	// toString method
+	// toString Method
 	
 	public String toString() {
 		
 		return "Client Info :- \nName: " + name +"\nDay Of Birth: " + dayOfBirth + "\nID: " + id + "\nPhone Number: " + phoneNumber + "\nEmail Address: " + emailAddress ;
 	}
 	
-	// setters & getters
+	// Setters & Getters
 	
 	public String getName() {
 		return name;
