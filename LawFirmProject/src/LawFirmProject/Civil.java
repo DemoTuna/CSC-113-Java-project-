@@ -5,94 +5,69 @@ public class Civil extends Case{
 
         //attributes
    
-	private char civilType;   // Family Law (F), Property Law (O), or Contract Law (C)
+	private char civilType;   // Type of civil case can be : Family Law (F), Property Law (P), Contract Law (C)
    
    
 	// parameterized constructor
    
-	public Civil(String caseNumber, char status, Client client ,int size, char civilType ) {
-        super(caseNumber, status, client,size);  // Call superclass constructor
+	public Civil(String caseNumber, char status, Client client ,int documentSize, char civilType ) {
+        super(caseNumber, status, client,documentSize);  // Call superclass constructor
         this.civilType = civilType;
        }
 
  
 
-	// Override method to calculate legal expenses for civil cases
-	@Override
+	// Method to calculate legal expenses for civil cases
 	public  double calculateLegalExpenses() {
-        double totalLegalExpenses = 0;
-    
-	       if (civilType == 'F') 
-	            totalLegalExpenses += 10000;
-	         else if (civilType == 'O') 
-	            totalLegalExpenses += 5000;
-	         else if (civilType == 'C') 
-	            totalLegalExpenses += 7000;
-	  
-	
-	       if (status == 'P') 
-	            totalLegalExpenses += (totalLegalExpenses * 0.2); // Increase legal expenses by 20% for pending cases
-	         else if (status == 'C') 
-	            totalLegalExpenses -= (totalLegalExpenses * 0.2); // Decrease legal expenses by 20% for closed cases
-	            
-	         super.legalExpenses = totalLegalExpenses;     
+        
+        switch (civilType) {
+        case 'F':
+        	legalExpenses = 10000  ;
+          break;
+        case 'O':
+       	 	legalExpenses = 12000 ;
+          break;
+        case 'C':
+       	 	legalExpenses = 11000 ;
+          break;
+        default:
+          System.out.println("Invaled civil Type ");
+        } 	
+
+    	if (status == 'P' || status == 'A' )
+    		legalExpenses = legalExpenses * 0.5 ;
+    	else
+    		if(status == 'L')
+    		   legalExpenses = legalExpenses * 0.25 ;
+    	
+    	
 	         return legalExpenses;
       }
-          
-                
-      
-   
-	   // Override method to calculate the estimated completion time for the civil case
-	   @Override
-	    public int calculateCompletionTime() {
-	    
-	        // Default completion time (in days)
-	        int completionTime = 0;
-	        
-	        switch (civilType) {
-	            case 'F':
-	                completionTime = 120; 
-	                break;
-	            case 'O':
-	                completionTime = 90; 
-	                break;
-	            case 'C':
-	                completionTime = 100; 
-	                break;
-	            default:
-	                completionTime = 90; 
-	                break;
-	        }
-	        
-	        return completionTime;
-	    }
-   
-   // Override Method to display information about the civil case
-   
-   
-	public void display(){
-   
-	  System.out.println(super.toString());     // Call display method of the superclass Case
-     
-         System.out.print("Civil Type: ");
-         switch (civilType) {
-            case 'F':
-              System.out.println("Family Law");
-              break;
-            case 'O':
-              System.out.println("Property Law");
-              break;
-            case 'C':
-              System.out.println("Contract Law");
-              break;
-            default:
-              System.out.println("Unknown");
-              break;
-     }
-          
-        System.out.println("Calculated Legal Expenses: " + calculateLegalExpenses());
-        System.out.println("Calculated Completion Time: " + calculateCompletionTime() + " days");
-}
+
+
+	public String toString() {
+		 String civilTypeString = "";
+		 
+		 switch (civilType) {
+         case 'F':
+        	 civilTypeString = "Family Law";
+           break;
+         case 'O':
+        	 civilTypeString = "Property Law";
+           break;
+         case 'C':
+        	 civilTypeString ="Contract Law";
+           break;
+         default:
+           System.out.println("Invaled civil Type ");
+		 }
+
+           String sum = "";
+		sum += super.toString();
+		sum+="\nCase Type: Civil Case \nCivil Type: "  + civilTypeString +"\nLegal Expenses: " + calculateLegalExpenses();
+		return sum ;
+		
+	}
 
        // setters & getters
       	public char getCivilType() {
