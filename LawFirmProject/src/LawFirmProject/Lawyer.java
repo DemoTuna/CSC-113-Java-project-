@@ -3,8 +3,7 @@ package LawFirmProject;
 
 public class Lawyer {
 	
-	//Attributes
-	
+	//Attributes	
 	private String name ;
 	private char experienceLevel ;//Lawyer Experience Levels can be:  Junior (J) , Senior (S) , Partner(P)
 	private String emailAddress ;
@@ -13,7 +12,7 @@ public class Lawyer {
 	private String barNumber ;
 	private String universityName ;
 	private int yearsOfExperience ;
-	public Case[] cases ;
+	public Case[] casesList ;
 	private int numberOfCases;
 	private int numberOfCasesWon;
 	private int numberOfCasesLost;
@@ -24,7 +23,6 @@ public class Lawyer {
 	
 	
 	// Parameterized Constructor
-	
 	public Lawyer(String name,char experienceLevel, String emailAddress, String phoneNumber,char licenseStatus, String barNumber,
 			String universityName, int casesSize, int yearsOfExperience, double baseSalary) {
 	
@@ -35,7 +33,7 @@ public class Lawyer {
 		this.licenseStatus = licenseStatus;
 		this.barNumber = barNumber;
 		this.universityName = universityName;
-		cases = new Case[casesSize];
+		casesList = new Case[casesSize];
 		numberOfCases = 0 ;
 		this.yearsOfExperience = yearsOfExperience;
 		this.numberOfCasesWon = 0;
@@ -46,8 +44,8 @@ public class Lawyer {
 	
 	//Method add a case 
 	public boolean addCase(Case c) {
-		if(numberOfCases < cases.length ) {
-			cases[numberOfCases++] = c;
+		if(numberOfCases < casesList.length ) {
+			casesList[numberOfCases++] = c;
 			return true ;
 		}
 		else
@@ -57,9 +55,9 @@ public class Lawyer {
 	//Method delete a case by case number  
 	public boolean deleteCase(String caseNum) {
 		for (int i = 0 ; i < numberOfCases ; i++ )
-    		if (cases[i].getCaseNumber().equals(caseNum))  {
-    			cases[i] = cases[numberOfCases - 1];
-    			cases[--numberOfCases] = null ;
+    		if (casesList[i].getCaseNumber().equals(caseNum))  {
+    			casesList[i] = casesList[numberOfCases - 1];
+    			casesList[--numberOfCases] = null ;
     			return true ;
     		}
 		return false ;
@@ -68,8 +66,8 @@ public class Lawyer {
 	//Method search for a case by case number 
     public Case searchForCase(String caseNum){
     	for (int i = 0 ; i < numberOfCases ; i++ )
-    		if (cases[i].getCaseNumber().equals(caseNum))
-    			return cases[i] ; 
+    		if (casesList[i].getCaseNumber().equals(caseNum))
+    			return casesList[i] ; 
     	
     		return null ;
 		
@@ -92,7 +90,7 @@ public class Lawyer {
     public double calculateTotalLegalExpenses() {
     	double totalLegalExpenses = 0 ;
     	for (int i = 0 ; i < numberOfCases ; i++ )
-    		totalLegalExpenses += cases[i].calculateLegalExpenses();
+    		totalLegalExpenses += casesList[i].calculateLegalExpenses();
     	return totalLegalExpenses ;
     }
 	
@@ -100,13 +98,13 @@ public class Lawyer {
 	public double calculateSalary() {
 		
 		switch (experienceLevel) {
-        case 'J':
+        case 'J': case 'j' :
         	salary = baseSalary + (numberOfCasesWon * 0.10 * calculateTotalLegalExpenses());
             break;
-        case 'S':
+        case 'S': case 's' :
         	salary = baseSalary + (numberOfCasesWon * 0.25 * calculateTotalLegalExpenses());
             break;
-        case 'P':
+        case 'P': case 'p' :
         	salary = baseSalary + (numberOfCasesWon * 0.5 * calculateTotalLegalExpenses() );
             break;
         default:
@@ -115,20 +113,37 @@ public class Lawyer {
 		return salary ;
 		
 	}
-	
-	//Method That List All Lawyer’s Cases
-	public void listAllCases() {
+	//Method That List All Lawyer’s Client
+	public void listAllClient() {
 		for(int i = 0 ; i < numberOfCases; i++) {
 			System.out.println("\n"+(i+1) + " :\n");
-			System.out.println("\n" + cases[i] + "\n");
+			casesList[i].getClient().DisplayClient();
+			
 		}
 	}
 	
+	   //Method That List All Lawyer’s Documents
+		public void listAllDocuments() {
+			for(int i = 0 ; i < numberOfCases; i++) {
+				System.out.println("\n"+(i+1) + " :\n");
+				casesList[i].listAllDocument();
+				
+			}	
+	}
 	
+	//Method That List All Lawyer’s Cases
+	public void listAllCase() {
+		for(int i = 0 ; i < numberOfCases; i++) {
+			System.out.println("\n"+(i+1) + " :\n");
+			casesList[i].DisplayCase();
+		}
+	}
+	
+	//Method That Reassign All Cases To Another Lawyer
 	public boolean reassignCases(Lawyer replacementLawyer) {
-		if (numberOfCases <= replacementLawyer.cases.length - replacementLawyer.getNumberOfCases() ) {
+		if (numberOfCases <= replacementLawyer.casesList.length - replacementLawyer.getNumberOfCases() ) {
 			for(int i = 0 ; i < numberOfCases ; i++) 
-				replacementLawyer.addCase(cases[i]);
+				replacementLawyer.addCase(casesList[i]);
 				
 			System.out.println("All " + name +"’s cases are handled by " + replacementLawyer.getName() );
 			return true ;
@@ -137,18 +152,65 @@ public class Lawyer {
 		return false ;
 	}
 	
-
+	//Method That Display Lawyer Info Only 
+	public void DisplayLawyer() {
+		String experienceLevelString = "" ;
+		switch (experienceLevel) {
+	    case 'J':
+	    	experienceLevelString = "Junior";
+	        break;
+	    case 'S':
+	    	experienceLevelString = "Senior";
+	        break;
+	    case 'P':
+	    	experienceLevelString = "Partner";
+	        break;
+	    default:
+	        System.out.println("Invaled Experience Level");
+		}
+		
+		String licenseStatusString = "" ;
+		switch (licenseStatus) {
+	    case 'A':
+	    	licenseStatusString = "Active";
+	        break;
+	    case 'S':
+	    	licenseStatusString = "Suspended";
+	        break;
+	    case 'R':
+	    	licenseStatusString = "Revoked";
+	        break;
+	    default:
+	        System.out.println("Invaled license Status ");
+		}
+		System.out.println("**********************************************");
+		System.out.println("Lawyer : \nName : " + name);
+		System.out.println("Experience Level : " + experienceLevelString);
+		System.out.println("Email Address : " + emailAddress);
+		System.out.println("Phone Number : " + phoneNumber);
+		System.out.println("License Status : " + licenseStatusString);
+		System.out.println("Bar Number : " + barNumber);
+		System.out.println("University Name : " + universityName);
+		System.out.println("Years Of Experience : " + yearsOfExperience);
+		System.out.println("Base Salary :" + baseSalary);
+		System.out.println("Salary :" + calculateSalary());
+		System.out.println("Number Of Cases : " + numberOfCases);
+		System.out.println("Number Of Won Cases : " + numberOfCasesWon);
+		System.out.println("Number Of Lost Cases : " + numberOfCasesLost );
+	}
+	
+	// toString method 
 	public String toString() {
 		
 	String experienceLevelString = "" ;
 	switch (experienceLevel) {
-    case 'J':
+    case 'J': case 'j' :
     	experienceLevelString = "Junior";
         break;
-    case 'S':
+    case 'S': case 's' :
     	experienceLevelString = "Senior";
         break;
-    case 'P':
+    case 'P': case 'p' :
     	experienceLevelString = "Partner";
         break;
     default:
@@ -156,30 +218,29 @@ public class Lawyer {
 	}
 	
 	String licenseStatusString = "" ;
-	switch (experienceLevel) {
-    case 'A':
+	switch (licenseStatus) {
+    case 'A': case 'a' :
     	licenseStatusString = "Active";
         break;
-    case 'S':
+    case 'S': case 's' :
     	licenseStatusString = "Suspended";
         break;
-    case 'R':
+    case 'R': case 'r' :
     	licenseStatusString = "Revoked";
         break;
     default:
         System.out.println("Invaled license Status ");
 	}
 	
-        	
 		String sum = "" ;
-		sum += "Lawyer : \nName : "+ name + "\nExperience Level : " + experienceLevelString + "\nEmail Address : " + emailAddress +
+		sum += "**********************************************\n" + "Lawyer : \nName : "+ name + "\nExperience Level : " + experienceLevelString + "\nEmail Address : " + emailAddress +
 				"\nPhone Number : " + phoneNumber +"\nLicense Status : " + licenseStatusString + "\nBar Number : " + barNumber +
 				"\nUniversity Name : " + universityName +"\n Years Of Experience : " + yearsOfExperience + "\nBase Salary :" + baseSalary +
 				"\nSalary :" + calculateSalary() +"\nNumber Of Cases : " + numberOfCases + "\nNumber Of Won Cases : " + numberOfCasesWon +"\nNumber Of Lost Cases : " +
 				+ numberOfCasesLost +"\n Cases :- " ;
 		
 		for(int i = 0 ; i < numberOfCases; i++) // list all cases methode 
-			sum += "\nCase"+(i+1)+" :\n"+ cases[i] + "\n"  ;
+			sum += "\nCase"+(i+1)+" :\n"+ casesList[i] + "\n"  ;
 		
 		
 		return sum ;
