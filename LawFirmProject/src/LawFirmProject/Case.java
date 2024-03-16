@@ -5,31 +5,29 @@ package LawFirmProject;
 public abstract class Case {
 
   // Attributes
-   
    protected String caseNumber;      
    protected char status;      // Status of the case can be:  Active (A), Pending (P), Lost (L), Won (W) 
    protected double legalExpenses;
    protected Client client;
-   protected Document[] documents; // all arrays name 
+   protected Document[] documentsList; // all arrays name 
    protected int numberOfDocuments;
 
 
 	
    //Parameterized constructor
-   
     public Case(String caseNumber, char status, Client client,int documentSize) {
     this.caseNumber = caseNumber;
     this.status = status;
     this.client=client; 
-    this.documents=new Document[documentSize];
+    this.documentsList=new Document[documentSize];
     this.legalExpenses = 0; 
     this.numberOfDocuments=0;
    }
    
    // Method to add a document to the case
    public boolean addDocument(Document document){
-     if(numberOfDocuments < documents.length){
-         documents[numberOfDocuments++] = document;
+     if(numberOfDocuments < documentsList.length){
+    	 documentsList[numberOfDocuments++] = document;
          return true ;
      }
      return false ;
@@ -39,8 +37,8 @@ public abstract class Case {
    // Method to search for a document by its tracking number
    public Document searchForDocument(String trackingNum){
      for(int i=0 ; i < numberOfDocuments ; i++){
-         if(documents[i].getTrackingNumber().equals(trackingNum))
-              return documents[i] ;
+         if(documentsList[i].getTrackingNumber().equals(trackingNum))
+              return documentsList[i] ;
          }
              return null ;
    }
@@ -48,18 +46,47 @@ public abstract class Case {
    // Method to delete a document 
    public boolean deleteDocument(String trackingNum){
 	   for(int i=0 ; i < numberOfDocuments ; i++)
-	         if(documents[i].getTrackingNumber().equals(trackingNum)) {
-	        	 documents[i] = documents[numberOfDocuments-1];
-	        	 documents[--numberOfDocuments] = null ;
+	         if(documentsList[i].getTrackingNumber().equals(trackingNum)) {
+	        	 documentsList[i] = documentsList[numberOfDocuments-1];
+	        	 documentsList[--numberOfDocuments] = null ;
 	        	 return true ; 
            }
 	         return false ;
    }
-	 
-   public void listAllDocuments() {
+   
+   //Method That Display Case Info Only Without Doc
+   public void DisplayCase() {
+	   String statusString = "" ;
+	    
+	     switch (status) {
+	        case 'A': case 'a' :
+	            statusString = "Active";
+	            break;
+	        case 'P': case 'p' :
+	            statusString = "Pending";
+	            break;
+	        case 'L': case 'l' :
+	            statusString = "Lost";
+	            break;
+	        case 'W': case 'w' :
+	            statusString = "Won";
+	            break;
+	        default:
+	            System.out.println("Invalid Status");
+	    }
+	     
+	   System.out.println("**********************************************");
+	   System.out.println("Case Number : " + caseNumber);
+	   System.out.println("Status : " + statusString);
+	   System.out.println("Number Of Documents : " + numberOfDocuments);
+	   
+   }
+   
+   // Method That List All Documents For A Lawyer 
+   public void listAllDocument() {
 		for(int i = 0 ; i < numberOfDocuments; i++) {
 			System.out.println("\n"+(i+1) + " :\n");
-			System.out.println("\n" + documents[i] + "\n");
+			documentsList[i].DisplayDocument(); 
 		}
    }
    
@@ -67,23 +94,22 @@ public abstract class Case {
   
    
    
-   // toString method 
-   
+   // toString Method 
    public String toString() {
 	   
     String statusString = "" ;
     
      switch (status) {
-        case 'A':
+        case 'A': case 'a' :
             statusString = "Active";
             break;
-        case 'P':
+        case 'P': case 'p' :
             statusString = "Pending";
             break;
-        case 'L':
+        case 'L': case 'l' :
             statusString = "Lost";
             break;
-        case 'W':
+        case 'W': case 'w' :
             statusString = "Won";
             break;
         default:
@@ -92,15 +118,14 @@ public abstract class Case {
      
     String documentsInfo = "";
     for (int i = 0; i < numberOfDocuments; i++) {
-           documentsInfo +="Document "+(i+1)+" : "+ documents[i] + "\n";  // list all docs method
+           documentsInfo +="Document "+(i+1)+" : "+ documentsList[i] + "\n";  // list all docs method
 }    
 
-    return "Case Number: " + caseNumber + "\nStatus: " + statusString  + "\n " + client +"\n" + documentsInfo;
+    return "**********************************************\n"+"Case Number : " + caseNumber + "\nStatus : " + statusString  + "\n " + client +"\n" + documentsInfo;
     
 }
    
    // setters & getters
-
    public String getCaseNumber() {
 	return caseNumber;
 }
