@@ -4,7 +4,6 @@ package LawFirmProject;
 public class Client {
 	
 	//Attributes
-	
 	private String name ;
 	private String dayOfBirth ;
 	private String id ;
@@ -15,7 +14,6 @@ public class Client {
 	
 	
 	// Parameterized Constructor
-	
 	public Client(String name, String dayOfBirth, String id, String phoneNumber, String emailAddress) {
 		
 		this.name = name;
@@ -24,17 +22,25 @@ public class Client {
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
 	}
-
+	// Method That Display all Client Attributes 
+	public void DisplayClient() {
+		System.out.println("**********************************************");
+		System.out.println("Client Info :-");
+		System.out.println("Name : " + name);
+		System.out.println("Day Of Birth : " + dayOfBirth);
+		System.out.println("ID : " + id);
+		System.out.println("Phone Number : " + phoneNumber);
+		System.out.println("Email Address : " + emailAddress);
+		
+	}
 
 	// toString Method
-	
 	public String toString() {
 		
-		return "Client Info :- \nName: " + name +"\nDay Of Birth: " + dayOfBirth + "\nID: " + id + "\nPhone Number: " + phoneNumber + "\nEmail Address: " + emailAddress ;
+		return "**********************************************\n"+"Client Info :- \nName: " + name +"\nDay Of Birth: " + dayOfBirth + "\nID: " + id + "\nPhone Number: " + phoneNumber + "\nEmail Address: " + emailAddress ;
 	}
 	
 	// Setters & Getters
-	
 	public String getName() {
 		return name;
 	}
