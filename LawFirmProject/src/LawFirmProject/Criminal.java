@@ -3,20 +3,18 @@ package LawFirmProject;
 
 public class Criminal extends Case {
 	
-// attribute
-	
-private char crimeTybe; // // Crime type can be : Cyber crime (C), Money laundering (M), Robbery (R), Homicide (H)
+	// Attribute
+	private char crimeTybe; // // Crime type can be : Cyber crime (C), Money laundering (M), Robbery (R), Homicide (H)
 
     
-//Parameterized constructor
-
+    //Parameterized constructor
     public Criminal(String caseNumber, char status,  Client client ,int documentSize ,  char crimeTybe) {
     super(caseNumber, status, client,documentSize);  // Call superclass constructor
     this.crimeTybe = crimeTybe;
 
 }
 
- //Method to calculate legal expenses for criminal cases  
+    //Method to calculate legal expenses for criminal cases  
     public  double calculateLegalExpenses() {
         
     	switch (crimeTybe) {
@@ -45,33 +43,52 @@ private char crimeTybe; // // Crime type can be : Cyber crime (C), Money launder
     	
 	         return legalExpenses;
     }
+ // Method That Display Criminal Attributes
+    public void DisplayCase() {
+    	super.DisplayCase();
+    	String crimeTybeString = "";
+		 
+		 switch (crimeTybe) {
+       case 'C': case 'c' :
+       	crimeTybeString = "Cyber crime";
+         break;
+       case 'M': case 'm' :
+       	crimeTybeString = "Money laundering";
+         break;
+       case 'R': case 'r' :
+       	crimeTybeString ="Robbery";
+         break;
+       case 'H': case 'h' :
+       	crimeTybeString ="Homicide";
+         break;
+       default:
+         System.out.println("Invaled Crime Type ");
+		 }
+		 
+		 System.out.println("Case Type: Criminal Case");
+		 System.out.println("Crime Tybe: " + crimeTybeString);
+		 System.out.println("Legal Expenses: " + calculateLegalExpenses());
+    	 
+    }
 
 
-    // setters & getters
-	public void setCrimeTybe(char crimeTybe) {
-		this.crimeTybe = crimeTybe; 
-}
+   
 
-	public char getCrimeTybe() {
-		return crimeTybe;
-	}
-
-
-
+    // toString Method
 	public String toString() {
 		String crimeTybeString = "";
 		 
 		 switch (crimeTybe) {
-        case 'C':
+        case 'C': case 'c' :
         	crimeTybeString = "Cyber crime";
           break;
-        case 'M':
+        case 'M': case 'm' :
         	crimeTybeString = "Money laundering";
           break;
-        case 'R':
+        case 'R': case 'r' :
         	crimeTybeString ="Robbery";
           break;
-        case 'H':
+        case 'H': case 'h' :
         	crimeTybeString ="Homicide";
           break;
         default:
@@ -82,5 +99,15 @@ private char crimeTybe; // // Crime type can be : Cyber crime (C), Money launder
 	sum+= "\nCase Type: Criminal Case \nCrime Tybe: " + crimeTybeString + "\nLegal Expenses: " + calculateLegalExpenses();
 	return sum ;
 }
+	
+	 // setters & getters
+		public void setCrimeTybe(char crimeTybe) {
+			this.crimeTybe = crimeTybe; 
+	}
+
+		public char getCrimeTybe() {
+			return crimeTybe;
+		}
+
 
 }
