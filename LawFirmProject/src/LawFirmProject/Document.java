@@ -22,6 +22,7 @@ public class Document {
 		this.accessLevel = accessLevel;
 	}
 
+	
 	// Method That Display Document Attributes
 	public void DisplayDocument() {
 		String accessLevelString;
@@ -107,7 +108,7 @@ public class Document {
 	           
 	  }
 	  
-	        return "**********************************************\n"+"Document Info :- \nTracking Number : " + trackingNumber + "\nTitle : " + title + "\nType : " + typeString + "\nContent : " + content + "\nAccess Level : " + accessLevelString;  
+	        return "\n**********************************************\n"+"Document Info :- \nTracking Number : " + trackingNumber + "\nTitle : " + title + "\nType : " + typeString + "\nContent : " + content + "\nAccess Level : " + accessLevelString;  
 	       }
 	
 
