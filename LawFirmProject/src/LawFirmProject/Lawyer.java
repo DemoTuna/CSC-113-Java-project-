@@ -46,6 +46,7 @@ public class Lawyer {
 	public boolean addCase(Case c) {
 		if(numberOfCases < casesList.length ) {
 			casesList[numberOfCases++] = c;
+			UpdateCaseStatus(c,c.getStatus());
 			return true ;
 		}
 		else
@@ -75,10 +76,10 @@ public class Lawyer {
     
   //Method Update Case Status 
     public void UpdateCaseStatus(Case C, char newStatus) {
-    	if(newStatus == 'W')
+    	if(newStatus == 'W'|| newStatus == 'w' )
     		numberOfCasesWon++;
     	else 
-    		if(newStatus == 'L')
+    		if(newStatus == 'L' || newStatus == 'l')
     			numberOfCasesLost++ ;
     	
     	C.setStatus(newStatus);
@@ -86,7 +87,18 @@ public class Lawyer {
     	
     }
     
-  //Method that calculate TotalLegal Expenses For a Lawyer
+  //Method that search For Document In Lawyer
+    public Document searchForDocumentInLawyer(String trackingNum){
+		for (int i = 0 ; i < numberOfCases ; i++ )
+			if(casesList[i].searchForDocument(trackingNum) != null) {
+				return casesList[i].searchForDocument(trackingNum) ;
+			}
+		
+		return null ;
+    }
+    
+    
+  //Method that calculate Total Legal Expenses For a Lawyer
     public double calculateTotalLegalExpenses() {
     	double totalLegalExpenses = 0 ;
     	for (int i = 0 ; i < numberOfCases ; i++ )
@@ -99,13 +111,13 @@ public class Lawyer {
 		
 		switch (experienceLevel) {
         case 'J': case 'j' :
-        	salary = baseSalary + (numberOfCasesWon * 0.10 * calculateTotalLegalExpenses());
+        	salary = baseSalary + ( 0.10 * calculateTotalLegalExpenses());
             break;
         case 'S': case 's' :
-        	salary = baseSalary + (numberOfCasesWon * 0.25 * calculateTotalLegalExpenses());
+        	salary = baseSalary + ( 0.25 * calculateTotalLegalExpenses());
             break;
         case 'P': case 'p' :
-        	salary = baseSalary + (numberOfCasesWon * 0.5 * calculateTotalLegalExpenses() );
+        	salary = baseSalary + ( 0.5 * calculateTotalLegalExpenses() );
             break;
         default:
             System.out.println("Invaled Experience Level");
@@ -113,10 +125,11 @@ public class Lawyer {
 		return salary ;
 		
 	}
+	
 	//Method That List All Lawyer’s Client
 	public void listAllClient() {
 		for(int i = 0 ; i < numberOfCases; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
+			System.out.println("");
 			casesList[i].getClient().DisplayClient();
 			
 		}
@@ -125,7 +138,7 @@ public class Lawyer {
 	   //Method That List All Lawyer’s Documents
 		public void listAllDocuments() {
 			for(int i = 0 ; i < numberOfCases; i++) {
-				System.out.println("\n"+(i+1) + " :\n");
+				System.out.println("");
 				casesList[i].listAllDocument();
 				
 			}	
@@ -134,7 +147,7 @@ public class Lawyer {
 	//Method That List All Lawyer’s Cases
 	public void listAllCase() {
 		for(int i = 0 ; i < numberOfCases; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
+			System.out.println("");
 			casesList[i].DisplayCase();
 		}
 	}
@@ -156,28 +169,28 @@ public class Lawyer {
 	public void DisplayLawyer() {
 		String experienceLevelString = "" ;
 		switch (experienceLevel) {
-	    case 'J':
+	    case 'J': case'j':
 	    	experienceLevelString = "Junior";
 	        break;
-	    case 'S':
+	    case 'S': case's':
 	    	experienceLevelString = "Senior";
 	        break;
-	    case 'P':
+	    case 'P': case'p':
 	    	experienceLevelString = "Partner";
 	        break;
-	    default:
+	    default: 
 	        System.out.println("Invaled Experience Level");
 		}
 		
 		String licenseStatusString = "" ;
 		switch (licenseStatus) {
-	    case 'A':
+	    case 'A': case'a':
 	    	licenseStatusString = "Active";
 	        break;
-	    case 'S':
+	    case 'S': case's':
 	    	licenseStatusString = "Suspended";
 	        break;
-	    case 'R':
+	    case 'R': case'r':
 	    	licenseStatusString = "Revoked";
 	        break;
 	    default:
@@ -235,9 +248,9 @@ public class Lawyer {
 		String sum = "" ;
 		sum += "**********************************************\n" + "Lawyer : \nName : "+ name + "\nExperience Level : " + experienceLevelString + "\nEmail Address : " + emailAddress +
 				"\nPhone Number : " + phoneNumber +"\nLicense Status : " + licenseStatusString + "\nBar Number : " + barNumber +
-				"\nUniversity Name : " + universityName +"\n Years Of Experience : " + yearsOfExperience + "\nBase Salary :" + baseSalary +
+				"\nUniversity Name : " + universityName +"\nYears Of Experience : " + yearsOfExperience + "\nBase Salary :" + baseSalary +
 				"\nSalary :" + calculateSalary() +"\nNumber Of Cases : " + numberOfCases + "\nNumber Of Won Cases : " + numberOfCasesWon +"\nNumber Of Lost Cases : " +
-				+ numberOfCasesLost +"\n Cases :- " ;
+				+ numberOfCasesLost +"\n\nCases :- " ;
 		
 		for(int i = 0 ; i < numberOfCases; i++) // list all cases methode 
 			sum += "\nCase"+(i+1)+" :\n"+ casesList[i] + "\n"  ;
