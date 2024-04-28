@@ -7,22 +7,24 @@ public class TestLawFirm {
 		Scanner input = new Scanner(System.in);
 		
 		System.out.println("Enter Law Firm Name : ");
-		String LawFirmName = input.nextLine();
-		input.nextLine();
-
+		String LawFirmName = input.next();
 		
-		System.out.println("Enter Law Firm Location : ");
-		String LawFirmLocation = input.nextLine();
-		input.nextLine();
+
+
+		System.out.println("Enter Law Firm Location : ");		
+		String LawFirmLocation = input.next();
+		
 		
 		System.out.println("Enter The Year The Law Firm Was Founded : ");
 		String LawFirmYearFounded = input.next();
 		
+
 		System.out.println("Enter Law Firm Owner Name : ");
-		String LawFirmOwnerName = input.nextLine();
-		input.nextLine();
+		String LawFirmOwnerName = input.next();
+		
 		
 		System.out.println("Enter The Maximm Number Of Lawyers  The Law Firm Can Have : ");
+		
 		int LawFirmSize = input.nextInt();
 		
 		
@@ -81,8 +83,8 @@ public class TestLawFirm {
 			
 			case 1: 
 				System.out.println("Enter Lawyer’s Name : ");
-				String LawyerName = input.nextLine();
-				input.nextLine();
+				String LawyerName = input.next();
+				
 				
 				System.out.println("Enter Lawyer’s Experience Level ( Junior (J) , Senior (S) , Partner(P) ): ");
 				char LawyerExperienceLevel = input.next().charAt(0);
@@ -100,10 +102,10 @@ public class TestLawFirm {
 				String LawyerBarNumber = input.next();
 				
 				System.out.println("Enter Lawyer’s University Name : ");
-				String LawyerUniversityName = input.nextLine();
-				input.nextLine();
+				String LawyerUniversityName = input.next();
 				
-				System.out.println("Enter The Maximm Number Of Cases That The Lawyer Can Handle : ");
+				
+				System.out.println("Enter The Maximum Number Of Cases That The Lawyer Can Handle : ");
 				int LawyerCasesSize = input.nextInt();
 				
 				System.out.println("Enter Lawyer’s Years Of Experience : ");
@@ -116,14 +118,13 @@ public class TestLawFirm {
 				
 				
 				if (LawFirm1.addLawyer(NewLawyer))
-					System.out.println("Lawyer Is Added Successfully :)");
+					System.out.println("Lawyer Is Added Successfully :)\n");
 				else
-					System.out.println("Failed To Add The Lawyer :(");
+					System.out.println("Failed To Add The Lawyer :(\n");
 				
 				break;
 				
 			case 2: 
-				System.out.println(" ");
 				
 						System.out.println("Enter Lawyer’s Bar Number To Dismiss : ");
 						String LawyerBarNumberForDismiss = input.next();
@@ -135,31 +136,31 @@ public class TestLawFirm {
 						
 						Lawyer LawyerForReplacement = LawFirm1.searchForLawyer(LawyerBarNumberForReplacement);
 						if(LawFirm1.dismissLawyer(LawyerBarNumberForDismiss, LawyerForReplacement))
-							System.out.println("Lawyer Has been Dismissed Successfully :)");
+							System.out.println("Lawyer Has been Dismissed Successfully :)\n");
 						else
-							System.out.println("Failed To Dismiss The Lawyer :(");
+							System.out.println("Failed To Dismiss The Lawyer :(\n");
 				
 				break;
 				
 			case 3:
-						System.out.println("Enter Lawyer’s Bar Number To Promote : ");
+						System.out.println("Enter Lawyer’s Bar Number To Promote Him\\Her : ");
 						String LawyerBarNumberToPromote = input.next();
 						
 						Lawyer LawyerToPromote = LawFirm1.searchForLawyer(LawyerBarNumberToPromote);
 						if (LawyerToPromote == null)
-							System.out.println("Can Not Find The Lawyer");
+							System.out.println("Can Not Find The Lawyer\n");
 						else 
 							LawFirm1.PromoteLawyer(LawyerToPromote);
 				
 				break;
 				
 			case 4:
-						System.out.println("Enter Lawyer’s Bar Number : ");
+						System.out.println("Enter Lawyer’s Bar Number To Search For Him\\Her : ");
 						String LawyerNameToSearch = input.next();
 						
 						Lawyer LawyerToSearch = LawFirm1.searchForLawyer(LawyerNameToSearch);
 						if (LawyerToSearch == null)
-							System.out.println("Can Not Find The Lawyer");
+							System.out.println("Can Not Find The Lawyer\n");
 						else 
 							System.out.println(LawyerToSearch);
 				
@@ -168,7 +169,7 @@ public class TestLawFirm {
 			case 5: 
 				int choice2 ;
 
-							System.out.println("Enter Lawyer’s Bar Number : ");
+							System.out.println("Enter Lawyer’s Bar Number To Update His\\Her Info : ");
 							String LawyerBarNumberToFind = input.next();
 							
 							Lawyer LawyerToUpdate = LawFirm1.searchForLawyer(LawyerBarNumberToFind);
@@ -195,67 +196,65 @@ public class TestLawFirm {
 									
 									case 1: 
 										System.out.println("Enter Lawyer’s New Name : ");
-										String LawyerNewName = input.nextLine();
-										input.nextLine();
+										String LawyerNewName = input.next();
 										LawyerToUpdate.setName(LawyerNewName);
-										System.out.println("Lawyer’s Name Has Been Updated ");
+										System.out.println("Lawyer’s Name Has Been Updated\n");
 										break;
 										
 									case 2: 
 										System.out.println("Enter Lawyer’s New Experience Level ( Junior (J) , Senior (S) , Partner(P) ): ");
 										char LawyerNewExperienceLevel = input.next().charAt(0);
 										LawyerToUpdate.setExperienceLevel(LawyerNewExperienceLevel);
-										System.out.println("Lawyer’s Experience Level Has Been Updated ");
+										System.out.println("Lawyer’s Experience Level Has Been Updated\n");
 										break;
 										
 									case 3: 
 										System.out.println("Enter Lawyer’s New Email Address : ");
 										String LawyerNewEmailAddress = input.next();
 										LawyerToUpdate.setEmailAddress(LawyerNewEmailAddress);
-										System.out.println("Lawyer’s Email Address Has Been Updated ");
+										System.out.println("Lawyer’s Email Address Has Been Updated\n");
 										break;
 										
 									case 4: 
 										System.out.println("Enter Lawyer’s New Phone Number : ");
 										String LawyerNewPhoneNumber = input.next();
 										LawyerToUpdate.setPhoneNumber(LawyerNewPhoneNumber);
-										System.out.println("Lawyer’s Phone Number Has Been Updated ");
+										System.out.println("Lawyer’s Phone Number Has Been Updated\n");
 										break;
 										
 									case 5: 
 										System.out.println("Enter Lawyer’s New License Status ( Active (A) , Suspended (S) , Revoked (R) ): ");
 										char LawyerNewLicenseStatus = input.next().charAt(0);
 										LawyerToUpdate.setLicenseStatus(LawyerNewLicenseStatus);
-										System.out.println("Lawyer’s License Status Has Been Updated ");
+										System.out.println("Lawyer’s License Status Has Been Updated\n");
 										break;
 										
 									case 6:
 										System.out.println("Enter Lawyer’s New Bar Number : ");
 										String LawyerNewBarNumber = input.next();
 										LawyerToUpdate.setBarNumber(LawyerNewBarNumber);
-										System.out.println("Lawyer’s Bar Number Has Been Updated ");
+										System.out.println("Lawyer’s Bar Number Has Been Updated\n");
 										break;
 										
 									case 7: 
 										System.out.println("Enter Lawyer’s New University Name : ");
-										String LawyerNewUniversityName = input.nextLine();
-										input.nextLine();
+										String LawyerNewUniversityName = input.next();
 										LawyerToUpdate.setUniversityName(LawyerNewUniversityName);
-										System.out.println("Lawyer’s University Name Has Been Updated ");
+										System.out.println("Lawyer’s University Name Has Been Updated\n");
 										break;
 										
 									case 8: 
 										System.out.println("Enter Lawyer’s New Years Of Experience : ");
 										int LawyerNewYearsOfExperience = input.nextInt();
 										LawyerToUpdate.setYearsOfExperience(LawyerNewYearsOfExperience);
-										System.out.println("Lawyer’s Years Of Experience Has Been Updated ");
+										System.out.println("Lawyer’s Years Of Experience Has Been Updated\n");
 										break;
 										
 									case 9: 
 										System.out.println("Enter Lawyer’s New Base Salary : ");
 										double LawyerNewBaseSalary = input.nextDouble();
 										LawyerToUpdate.setBaseSalary(LawyerNewBaseSalary);
-										System.out.println("Lawyer’s Base Salary Has Been Updated ");
+										System.out.println("Lawyer’s Base Salary Has Been Updated\n");
 										break;
 								
 									
@@ -267,17 +266,16 @@ public class TestLawFirm {
 					
 			case 6: 
 				
-				System.out.println("Enter Lawyer’s Bar Number To Assign A Case To Them : ");
+				System.out.println("Enter Lawyer’s Bar Number To Assign The Case To Them : ");
 				String LawyerBarNumberToAssignCase = input.next();
 				
 				Lawyer LawyerToAssignCase = LawFirm1.searchForLawyer(LawyerBarNumberToAssignCase);
 				if (LawyerToAssignCase == null)
-					System.out.println("Can Not Find The Lawyer");
+					System.out.println("Can Not Find The Lawyer\n");
 				else {
 					
 					System.out.println("Enter Client’s Name : ");
-					String ClientName = input.nextLine();
-					input.nextLine();
+					String ClientName = input.next();
 					
 					System.out.println("Enter Client’s Day Of Birth In The Format (DD/MM/YYYY) : ");
 					String ClientDayOfBirth = input.next();
@@ -313,9 +311,9 @@ public class TestLawFirm {
 					
 						Case NewCase = new Criminal(CaseNumber , CaseStatus , NewClient , CaseDocumentSize ,CrimeType) ;
 						if (LawyerToAssignCase.addCase(NewCase))
-							System.out.println("Case Is Added Successfully :)");
+							System.out.println("Case Is Added Successfully :)\n");
 						else
-							System.out.println("Failed To Add The Case :(");
+							System.out.println("Failed To Add The Case :(\n");
 					}//End Of If Statement
 					else 
 						if(CaseType == 2) {
@@ -325,9 +323,9 @@ public class TestLawFirm {
 							Case NewCase = new Civil(CaseNumber , CaseStatus , NewClient , CaseDocumentSize ,CivilType) ;
 							
 							if (LawyerToAssignCase.addCase(NewCase))
-									System.out.println("Case Is Added Successfully :)");
+									System.out.println("Case Is Added Successfully :)\n");
 								else
-									System.out.println("Failed To Add The Case :(");
+									System.out.println("Failed To Add The Case :(\n");
 							
 						}//End Of If Statement
 					
@@ -337,61 +335,45 @@ public class TestLawFirm {
 				break;
 				
 			case 7:
-				System.out.println("Enter Lawyer’s Bar Number To Delete A Case  : ");
+				System.out.println("Enter Lawyer’s Bar Number To Delete A Case : ");
 				String LawyerBarNumberToDeleteCase = input.next();
 				
 				Lawyer LawyerToDeleteCase = LawFirm1.searchForLawyer(LawyerBarNumberToDeleteCase);
 				if (LawyerToDeleteCase == null)
-					System.out.println("Can Not Find The Lawyer");
+					System.out.println("Can Not Find The Lawyer\n");
 				else {
 					
 					System.out.println("Enter Case Number : ");
 					String CaseNumberToDeleteCase = input.next();
 					
 					if( LawyerToDeleteCase.deleteCase(CaseNumberToDeleteCase) )
-						System.out.println("Case Is Deleted Successfully :)");
+						System.out.println("Case Is Deleted Successfully :)\n");
 					else
-						System.out.println("Failed To Delete The Case :(");
+						System.out.println("Failed To Delete The Case :(\n");
 				}//End Of Else Statement
 				
 				break;
 			case 8:
-				System.out.println("Enter Lawyer’s Bar Number To Delete A Case  : ");
-				String LawyerBarNumberTosearchForCase = input.next();
-				
-				Lawyer LawyerTosearchForCase = LawFirm1.searchForLawyer(LawyerBarNumberTosearchForCase);
-				if (LawyerTosearchForCase == null)
-					System.out.println("Can Not Find The Lawyer");
-				else {
-					
 					System.out.println("Enter Case Number : ");
 					String CaseNumberTosearchForCase = input.next();
-					Case caseToFind = LawyerTosearchForCase.searchForCase(CaseNumberTosearchForCase);
+					
+					Case caseToFind = LawFirm1.searchForCaseInFirm(CaseNumberTosearchForCase);
 					if(  caseToFind == null)
-						System.out.println("Can Not Find The Case");
+						System.out.println("Can Not Find The Case\n");
 					else 
 						System.out.println(caseToFind);
-				}//End Of Else Statement
 
-				
 				break;
 				
 			case 9: 
 				int choice3 ;
-
-				System.out.println("Enter Lawyer’s Bar Number : ");
-				String LawyerBarNumberToUpdateCase = input.next();
 				
 				System.out.println("Enter Case Number : ");
 				String CaseNumberToUpdateCase = input.next();
 				
-				Lawyer LawyerToUpdateCase = LawFirm1.searchForLawyer(LawyerBarNumberToUpdateCase);
-				if (LawyerToUpdateCase == null)
-					System.out.println("Can Not Find The Lawyer");
-				else {
-				Case caseToUpdate = LawyerToUpdateCase.searchForCase(CaseNumberToUpdateCase);
+				Case caseToUpdate = LawFirm1.searchForCaseInFirm(CaseNumberToUpdateCase);
 				if(caseToUpdate == null)
-					System.out.println("Can Not Find The Case");
+					System.out.println("Can Not Find The Case\n");
 				
 				else {
 					Client clientToUpdate = caseToUpdate.getClient();
@@ -417,14 +399,14 @@ public class TestLawFirm {
 							System.out.println("Enter New Case Number : ");
 							String NewCaseNumber = input.next();
 							caseToUpdate.setCaseNumber(NewCaseNumber);
-							System.out.println("Case Number Has Been Updated ");
+							System.out.println("Case Number Has Been Updated\n");
 							break;
 							
 						case 2 :
 							System.out.println("Enter New Case Status ( Active (A), Pending (P), Lost (L), Won (W) ) : ");
 							char NewCaseStatus = input.next().charAt(0);
 							caseToUpdate.setStatus(NewCaseStatus);
-							System.out.println("Case Status Has Been Updated ");
+							System.out.println("Case Status Has Been Updated\n");
 							break;
 							
 						case 3 :
@@ -432,52 +414,51 @@ public class TestLawFirm {
 								System.out.println("Enter New Crime Type ( Cyber Crime (C), Money Laundering (M), Robbery (R), Homicide (H) ) : ");
 								char NewCrimeType = input.next().charAt(0);
 								((Criminal)caseToUpdate).setCrimeTybe(NewCrimeType);
-								System.out.println("Crime Tybe Has Been Updated ");
+								System.out.println("Crime Tybe Has Been Updated\n");
 							}
 							else
 								if (caseToUpdate instanceof Civil) {
 									System.out.println("Enter New Civil Type ( Family Law (F), Property Law (P), Contract Law (C) ) : ");
 									char NewCivilType = input.next().charAt(0);
 									((Civil)caseToUpdate).setCivilType(NewCivilType);
-									System.out.println("Civil Tybe Has Been Updated ");
+									System.out.println("Civil Tybe Has Been Updated\n");
 								}
 							break;
 							
 						case 4 :
 							System.out.println("Enter Client’s New Name : ");
-							String NewClientName = input.nextLine();
-							input.nextLine();
+							String NewClientName = input.next();
 						
 							clientToUpdate.setName(NewClientName);
-							System.out.println("Client’s Name Has Been Updated ");
+							System.out.println("Client’s Name Has Been Updated\n");
 							break;
 							
 						case 5 :
 							System.out.println("Enter Client’s New Day Of Birth In The Format (DD/MM/YYYY) : ");
 							String NewClientDayOfBirth = input.next();
 							clientToUpdate.setDayOfBirth(NewClientDayOfBirth);
-							System.out.println("Client’s Day Of Birth Has Been Updated ");
+							System.out.println("Client’s Day Of Birth Has Been Updated\n");
 							break;
 							
 						case 6 :
 							System.out.println("Enter Client’s  New ID : ");
 							String NewClientId = input.next();
 							clientToUpdate.setId(NewClientId);
-							System.out.println("Client’s ID Has Been Updated ");
+							System.out.println("Client’s ID Has Been Updated\n");
 							break;
 							
 						case 7 :
 							System.out.println("Enter Client’s New Phone Number : ");
 							String NewClientPhoneNumber = input.next();
 							clientToUpdate.setPhoneNumber(NewClientPhoneNumber);
-							System.out.println("Client’s Phone Number Has Been Updated ");
+							System.out.println("Client’s Phone Number Has Been Updated\n");
 							break;
 							
 						case 8 :
 							System.out.println("Enter Client’s New Email Address : ");
 							String NewClientEmailAddress = input.next();
 							clientToUpdate.setEmailAddress(NewClientEmailAddress);
-							System.out.println("Client’s Email Address Has Been Updated ");
+							System.out.println("Client’s Email Address Has Been Updated\n");
 							break;	
 
 							
@@ -488,40 +469,30 @@ public class TestLawFirm {
 					
 				}//End Of Else Statement
 				
-				}//End Of Else Statement
 						
 				break;
 				
 			case 10: 
 				
-				System.out.println("Enter Lawyer’s Bar Number : ");
-				String LawyerBarNumberToAddDoc = input.next();
-				
 				System.out.println("Enter Case Number : ");
 				String CaseNumberToAddDoc = input.next();
 				
-				Lawyer LawyerToAddDoc = LawFirm1.searchForLawyer(LawyerBarNumberToAddDoc);
-				if (LawyerToAddDoc == null)
-					System.out.println("Can Not Find The Lawyer");
-				else {
-				Case caseToAddDoc = LawyerToAddDoc.searchForCase(CaseNumberToAddDoc);
+				Case caseToAddDoc = LawFirm1.searchForCaseInFirm(CaseNumberToAddDoc);
 				if(caseToAddDoc == null)
-					System.out.println("Can Not Find The Case");
+					System.out.println("Can Not Find The Case\n");
 				
 				else {
 					System.out.println("Enter Document’s Tracking Number : ");
 					String DocumentTrackingNumber = input.next();
 					
 					System.out.println("Enter Document’s Title : ");
-					String DocumentTitle = input.nextLine();
-					input.nextLine();
+					String DocumentTitle = input.next();
 					
 					System.out.println("Enter Document’s Type ( Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E) ) :");
 					char DocumentType = input.next().charAt(0);
 					
 					System.out.println("Enter Document’s Content : ");
-					String DocumentContent = input.nextLine();
-					input.nextLine();
+					String DocumentContent = input.next();
 					
 					System.out.println("Enter Document’s Access Level ( Public (P) , Confidential (C) , Restricted (R) ) :");
 					char DocumentAccessLevel = input.next().charAt(0);
@@ -530,88 +501,61 @@ public class TestLawFirm {
 					
 					Document NewDocument = new Document(DocumentTrackingNumber, DocumentTitle, DocumentType , DocumentContent , DocumentAccessLevel );
 					if(caseToAddDoc.addDocument(NewDocument))
-						System.out.println("Document Is Added Successfully :)");
+						System.out.println("Document Is Added Successfully :)\n");
 					else
-						System.out.println("Failed To Add The Document :(");
+						System.out.println("Failed To Add The Document :(\n");
 						
 					
 				}
-					
-				}
-						
-						
+		
 						
 				break;
 				
 			case 11: 
-
-				System.out.println("Enter Lawyer’s Bar Number : ");
-				String LawyerBarNumberToDeleteDoc = input.next();
 				
 				System.out.println("Enter Case Number : ");
 				String CaseNumberToDeleteDoc = input.next();
 				
-				Lawyer LawyerToDeleteDoc = LawFirm1.searchForLawyer(LawyerBarNumberToDeleteDoc);
-				if (LawyerToDeleteDoc == null)
-					System.out.println("Can Not Find The Lawyer");
-				else {
-				Case caseToDeleteDoc = LawyerToDeleteDoc.searchForCase(CaseNumberToDeleteDoc);
+				Case caseToDeleteDoc = LawFirm1.searchForCaseInFirm(CaseNumberToDeleteDoc);
 				if(caseToDeleteDoc == null)
-					System.out.println("Can Not Find The Case");
+					System.out.println("Can Not Find The Case\n");
 				
 				else {
 					System.out.println("Enter Document’s Tracking Number That You Want To Delete: ");
 					String DocumentTrackingNumber = input.next();
 					
 					if(caseToDeleteDoc.deleteDocument(DocumentTrackingNumber))
-						System.out.println("Document Is Deleted Successfully :)");
+						System.out.println("Document Is Deleted Successfully :)\n");
 					else
-						System.out.println("Failed To Delete The Document :(");
+						System.out.println("Failed To Delete The Document :(\n");
 				}
-				}
+				
 				break;
 				
 			case 12: 
-				System.out.println("Enter Lawyer’s Bar Number : ");
-				String LawyerBarNumberToSearchForDoc = input.next();
 				
-				System.out.println("Enter Case Number : ");
-				String CaseNumberToSearchForDoc = input.next();
+				System.out.println("Enter Document Tracking Number : ");
+				String DocTrackingNumber = input.next();
 				
-				Lawyer LawyerToSearchForDoc = LawFirm1.searchForLawyer(LawyerBarNumberToSearchForDoc);
-				if (LawyerToSearchForDoc == null)
-					System.out.println("Can Not Find The Lawyer");
-				else {
-				Case caseToSearchForDoc = LawyerToSearchForDoc.searchForCase(CaseNumberToSearchForDoc);
-				if(caseToSearchForDoc == null)
-					System.out.println("Can Not Find The Case");
-				
-				else {
-					Document documentToFind = caseToSearchForDoc.searchForDocument(CaseNumberToSearchForDoc);
-					System.out.println(documentToFind);
+					Document documentToFind = LawFirm1.searchForDocumentInFirm(DocTrackingNumber);
+					if(documentToFind == null)
+						System.out.println("Can Not Find The Document\n");
+					else
+						System.out.println(documentToFind);
 					
-				}}
+				
 				break;
 				
 			case 13: 
 				int choice4 ;
 
-				System.out.println("Enter Lawyer’s Bar Number : ");
-				String LawyerBarNumberToUpdateDocument = input.next();
-				
-				System.out.println("Enter Case Number : ");
-				String CaseNumberToUpdateDocument = input.next();
-				
-				Lawyer LawyerToUpdateDocument = LawFirm1.searchForLawyer(LawyerBarNumberToUpdateDocument);
-				if (LawyerToUpdateDocument == null)
-					System.out.println("Can Not Find The Lawyer");
-				else {
-				Case caseToUpdateDocument = LawyerToUpdateDocument.searchForCase(CaseNumberToUpdateDocument);
-				if(caseToUpdateDocument == null)
-					System.out.println("Can Not Find The Case");
-				
-				else {
-					Document documentToUpdate= caseToUpdateDocument.searchForDocument(CaseNumberToUpdateDocument);
+				System.out.println("Enter Document’s Tracking Number: ");
+				String DocumentTrackingNumber = input.next();
+
+					Document documentToUpdate= LawFirm1.searchForDocumentInFirm(DocumentTrackingNumber);
+					if(documentToUpdate == null )
+						System.out.println("Can Not Find The Document\n");
+					else {
 					do {
 						System.out.println("# What Do You Want To Update On The Document:-\n");
 						System.out.println("1- Update Document’s Tracking Number");
@@ -633,41 +577,39 @@ public class TestLawFirm {
 							
 						case 2 :
 							System.out.println("Enter New Title : ");
-							String NewTitle= input.nextLine();
-							input.nextLine();
+							String NewTitle= input.next();
 							documentToUpdate.setTitle(NewTitle);
-							System.out.println("Document’s Title Has Been Updated ");
+							System.out.println("Document’s Title Has Been Updated\n");
 							break;
 						
 						case 3 :
 							System.out.println("Enter New Type ( Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E) ) : ");
 						    char NewType= input.next().charAt(0);
 							documentToUpdate.setType(NewType);
-							System.out.println("Document’s Type Has Been Updated ");
+							System.out.println("Document’s Type Has Been Updated\n");
 							break;
 						
 						case 4 :
 							System.out.println("Enter New Content : ");
-							String NewContent= input.nextLine();
-							input.nextLine();
+							String NewContent= input.next();
+
 							documentToUpdate.setContent(NewContent);
-							System.out.println("Document’s Content Has Been Updated ");
+							System.out.println("Document’s Content Has Been Updated\n");
 							break;
 							
 						case 5 :
 							System.out.println("Enter New Access Level ( Public (P) , Confidential (C) , Restricted (R) ) : ");
 						    char NewAccessLevel= input.next().charAt(0);
 							documentToUpdate.setAccessLevel(NewAccessLevel);
-							System.out.println("Document’s Access Level Has Been Updated ");
+							System.out.println("Document’s Access Level Has Been Updated\n");
 							break;
 							
 							
-						}
+						}//End Of Switch
 							}while(choice4 != 0); ////End Of The Do While Loop
 					
 						}//End Of Else Statement
 				
-				}//End Of Else Statement
 				
 				break;
 				
