@@ -44,6 +44,28 @@ public class LawFirm {
 		}
 		
 		
+		//Method search for a case by case’s number in the Firm
+		public Case searchForCaseInFirm(String caseNum) {
+			for (int i = 0 ; i < numberOfLawyers ; i++ ) 
+				if (lawyersList[i].searchForCase(caseNum)!= null) {
+					System.out.println( lawyersList[i].getName() + " Is The Lawyer How Is Handling The Case \nHis\\Her Bar Number is " + lawyersList[i].getBarNumber());
+					return lawyersList[i].searchForCase(caseNum) ;
+				}
+				
+					return null ;
+			
+		}
+		
+		//Method search for a Document by tracking Number in the Firm
+		public Document searchForDocumentInFirm(String trackingNum){
+			for (int i = 0 ; i < numberOfLawyers ; i++ )
+				if (lawyersList[i].searchForDocumentInLawyer(trackingNum) != null) {
+					System.out.println("This Document Belong To A Case That Is Handled by The Lawyer " + lawyersList[i].getName() + "\nHis\\Her Bar Number is " + lawyersList[i].getBarNumber() );
+					return lawyersList[i].searchForDocumentInLawyer(trackingNum) ;
+				}
+			
+			return null ;
+		}
 		
 	// Method dismiss a Lawyer by bar Number
 	public boolean dismissLawyer(String barNum , Lawyer replacementLawyer){
@@ -54,62 +76,58 @@ public class LawFirm {
 					lawyersList[--numberOfLawyers]= null ;
 				return true;
 			}
-		return false; // there is some flaws
+		return false; 
 	}
 	
 	// Method That Promote A Lawyer If The Lawyer Deserve promotion
 	public void PromoteLawyer(Lawyer lawyer) {
 		lawyer.setExperienceLevel(Character.toUpperCase(lawyer.getExperienceLevel()));
-		if (lawyer.getExperienceLevel()== 'J' && lawyer.getYearsOfExperience() >= 4) {
+		if ((lawyer.getExperienceLevel()== 'J' || lawyer.getExperienceLevel()== 'j') && lawyer.getYearsOfExperience() >= 4) {
 			lawyer.setExperienceLevel('S');
 			lawyer.setBaseSalary(lawyer.getBaseSalary()+2000);
 			System.out.println("The lawyer "+ lawyer.getName() +" has been promoted to Senior");
 
 		}
 		else 
-			if(lawyer.getExperienceLevel()== 'S' && lawyer.getNumberOfCasesWon()>=10 ) { 
+			if((lawyer.getExperienceLevel()== 'S' || lawyer.getExperienceLevel()== 's') && lawyer.getNumberOfCasesWon()>=10 ) { 
 				lawyer.setExperienceLevel('P');
 				lawyer.setBaseSalary(lawyer.getBaseSalary()+3000);
 				System.out.println("The lawyer "+ lawyer.getName() +" has been promoted to Partner");
 			}
 			else 
-				if(lawyer.getExperienceLevel()== 'P')
+				if(lawyer.getExperienceLevel()== 'P' || lawyer.getExperienceLevel()== 'p')
 					System.out.println("The lawyer "+ lawyer.getName() +" is a Partner ,the lawyer do not need Promotion"); 
 					else
-						System.out.println("The lawyer "+ lawyer.getName() + "should work on himself/ herself more to earn a Promotion ");	
+						System.out.println("The lawyer "+ lawyer.getName() + " should work on himself/ herself more to earn a Promotion ");	
 		
 	}
 	
 	//Method That List All Lawyers Info Without Cases Details
 	public void ListAllLawyers() {
-		for(int i = 0 ; i < numberOfLawyers; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
+		for(int i = 0 ; i < numberOfLawyers; i++) 
 			lawyersList[i].DisplayLawyer(); 
-		}
+		
 	}
 	
 	//Method That List All Cases Info Without Document Details	
 	public void ListAllCases() {
-		for(int i = 0 ; i < numberOfLawyers; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
+		for(int i = 0 ; i < numberOfLawyers; i++) 
 			lawyersList[i].listAllCase();
-			}	
+		
 	}
 	
 	//Method That List All Documents 
 	public void ListAllDocuments() {
-		for(int i = 0 ; i < numberOfLawyers; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
+		for(int i = 0 ; i < numberOfLawyers; i++) 
 			lawyersList[i].listAllDocuments();
-			}	
+			
 	}
 	
 	//Method That List All Clients
 	public void ListAllClients() {
-		for(int i = 0 ; i < numberOfLawyers; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
+		for(int i = 0 ; i < numberOfLawyers; i++) 
 			lawyersList[i].listAllClient();
-			}	
+				
 	}
 	
 	
