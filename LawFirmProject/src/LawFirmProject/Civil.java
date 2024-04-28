@@ -22,7 +22,7 @@ public class Civil extends Case{
         case 'F': case 'f' :
         	legalExpenses = 10000  ;
           break;
-        case 'O': case 'o' :
+        case 'P': case 'p' :
        	 	legalExpenses = 12000 ;
           break;
         case 'C': case 'c' :
@@ -32,10 +32,10 @@ public class Civil extends Case{
           System.out.println("Invaled civil Type ");
         } 	
 
-    	if (status == 'P' || status == 'A' )
+    	if (status == 'P' || status == 'p' || status == 'A' || status == 'a' )
     		legalExpenses = legalExpenses * 0.5 ;
     	else
-    		if(status == 'L')
+    		if(status == 'L' || status == 'l' )
     		   legalExpenses = legalExpenses * 0.25 ;
     	
     	
@@ -51,7 +51,7 @@ public class Civil extends Case{
          case 'F': case 'f' :
         	 civilTypeString = "Family Law";
            break; 
-         case 'O': case 'o' :
+         case 'P': case 'p' :
         	 civilTypeString = "Property Law";
            break;
          case 'C': case 'c' :
@@ -64,17 +64,20 @@ public class Civil extends Case{
 		System.out.println("Case Type: Civil Case  ");
 		System.out.println("Civil Type: "  + civilTypeString);
 		System.out.println("Legal Expenses: " + calculateLegalExpenses());
+		System.out.println(client);
+		 for (int i = 0; i < numberOfDocuments; i++) 
+			 System.out.println("Document "+(i+1)+" : "+ documentsList[i] + "\n" );  // list all docs method
 	}
 
 	// toString Method
 	public String toString() {
 		 String civilTypeString = "";
-		 
+		
 		 switch (civilType) {
          case 'F': case 'f' :
         	 civilTypeString = "Family Law";
            break;
-         case 'O': case 'o' :
+         case 'P': case 'p' :
         	 civilTypeString = "Property Law";
            break;
          case 'C': case 'c' :
@@ -86,7 +89,9 @@ public class Civil extends Case{
 
            String sum = "";
 		sum += super.toString();
-		sum+="\nCase Type: Civil Case \nCivil Type: "  + civilTypeString +"\nLegal Expenses: " + calculateLegalExpenses();
+		sum+="\nCase Type: Civil Case \nCivil Type: "  + civilTypeString +"\nLegal Expenses: " + calculateLegalExpenses() + client ;
+		    for (int i = 0; i < numberOfDocuments; i++) 
+		    	sum+= "\n\nDocument "+(i+1)+" : "+ documentsList[i] + "\n";  // list all docs method
 		return sum ;
 		
 	}
