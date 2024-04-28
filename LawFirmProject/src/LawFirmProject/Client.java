@@ -22,7 +22,8 @@ public class Client {
 		this.phoneNumber = phoneNumber;
 		this.emailAddress = emailAddress;
 	}
-	// Method That Display all Client Attributes 
+	
+	// Method That Display Client Attributes 
 	public void DisplayClient() {
 		System.out.println("**********************************************");
 		System.out.println("Client Info :-");
@@ -37,7 +38,7 @@ public class Client {
 	// toString Method
 	public String toString() {
 		
-		return "**********************************************\n"+"Client Info :- \nName: " + name +"\nDay Of Birth: " + dayOfBirth + "\nID: " + id + "\nPhone Number: " + phoneNumber + "\nEmail Address: " + emailAddress ;
+		return "\nClient Info :- \nName: " + name +"\nDay Of Birth: " + dayOfBirth + "\nID: " + id + "\nPhone Number: " + phoneNumber + "\nEmail Address: " + emailAddress ;
 	}
 	
 	// Setters & Getters
