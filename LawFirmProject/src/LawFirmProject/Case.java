@@ -1,7 +1,5 @@
 package LawFirmProject;
 
-
-
 public abstract class Case {
 
   // Attributes
@@ -30,6 +28,7 @@ public abstract class Case {
     	 documentsList[numberOfDocuments++] = document;
          return true ;
      }
+     
      return false ;
    
    }
@@ -70,6 +69,7 @@ public abstract class Case {
 	            break;
 	        case 'W': case 'w' :
 	            statusString = "Won";
+	            
 	            break;
 	        default:
 	            System.out.println("Invalid Status");
@@ -82,10 +82,9 @@ public abstract class Case {
 	   
    }
    
-   // Method That List All Documents For A Lawyer 
+   // Method That List All Documents For A Case 
    public void listAllDocument() {
 		for(int i = 0 ; i < numberOfDocuments; i++) {
-			System.out.println("\n"+(i+1) + " :\n");
 			documentsList[i].DisplayDocument(); 
 		}
    }
@@ -98,7 +97,7 @@ public abstract class Case {
    public String toString() {
 	   
     String statusString = "" ;
-    
+
      switch (status) {
         case 'A': case 'a' :
             statusString = "Active";
@@ -111,17 +110,15 @@ public abstract class Case {
             break;
         case 'W': case 'w' :
             statusString = "Won";
+            
+            
             break;
         default:
             System.out.println("Invalid Status");
     }
-     
-    String documentsInfo = "";
-    for (int i = 0; i < numberOfDocuments; i++) {
-           documentsInfo +="Document "+(i+1)+" : "+ documentsList[i] + "\n";  // list all docs method
-}    
+       
 
-    return "**********************************************\n"+"Case Number : " + caseNumber + "\nStatus : " + statusString  + "\n " + client +"\n" + documentsInfo;
+    return "**********************************************\n"+"Case Number : " + caseNumber + "\nStatus : " + statusString ;
     
 }
    
