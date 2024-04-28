@@ -18,31 +18,32 @@ public class Criminal extends Case {
     public  double calculateLegalExpenses() {
         
     	switch (crimeTybe) {
-        case 'C':
+        case 'C': case 'c' :
         	legalExpenses = 40000 ;
           break;
-        case 'M':
+        case 'M': case 'm' :
        	 	legalExpenses = 35000 ;
           break;
-        case 'R':
+        case 'R': case 'r' :
        	 	legalExpenses = 30000 ;
           break;
-        case 'H':
+        case 'H': case 'h' :
        	 	legalExpenses = 50000 ;
           break;
         default:
           System.out.println("Invaled Crime Type ");
         } 	
     	
-    	if (status == 'P' || status == 'A' )
+    	if (status == 'P' ||  status == 'p' || status == 'A' || status == 'a')
     		legalExpenses = legalExpenses * 0.5 ;
     	else
-    		if(status == 'L')
+    		if(status == 'L' || status == 'l')
     		   legalExpenses = legalExpenses * 0.25 ;
     	
     	
 	         return legalExpenses;
     }
+    
  // Method That Display Criminal Attributes
     public void DisplayCase() {
     	super.DisplayCase();
@@ -68,6 +69,8 @@ public class Criminal extends Case {
 		 System.out.println("Case Type: Criminal Case");
 		 System.out.println("Crime Tybe: " + crimeTybeString);
 		 System.out.println("Legal Expenses: " + calculateLegalExpenses());
+		 System.out.println(client);
+		 		 
     	 
     }
 
@@ -96,7 +99,10 @@ public class Criminal extends Case {
 		 }
 	String sum = "";
 	sum += super.toString();
-	sum+= "\nCase Type: Criminal Case \nCrime Tybe: " + crimeTybeString + "\nLegal Expenses: " + calculateLegalExpenses();
+	sum+= "\nCase Type: Criminal Case \nCrime Tybe: " + crimeTybeString + "\nLegal Expenses: " + calculateLegalExpenses() + client ;
+	for (int i = 0; i < numberOfDocuments; i++) 
+    	sum+= "\n\nDocument "+(i+1)+" : "+ documentsList[i] + "\n";  // list all docs method
+	
 	return sum ;
 }
 	
