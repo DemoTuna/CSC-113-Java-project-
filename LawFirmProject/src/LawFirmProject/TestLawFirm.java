@@ -1,11 +1,33 @@
 package LawFirmProject;
 import java.util.*;
-public class TestLawFirm {
+public class TestLawFirm1 {
 
 	public static void main(String[] args) {
 		
 		Scanner input = new Scanner(System.in);
-		
+      int LawFirmSize;
+      char LawyerExperienceLevel;
+      char LawyerLicenseStatus;
+      int LawyerCasesSize;
+      int LawyerYearsOfExperience;
+      double LawyerBaseSalary;
+      char LawyerNewExperienceLevel;
+      char LawyerNewLicenseStatus;
+      int LawyerNewYearsOfExperience;
+      double LawyerNewBaseSalary;
+      char CaseStatus;
+      int CaseDocumentSize;
+      int CaseType;
+      char CrimeType;
+      char CivilType;
+      char NewCaseStatus ;
+      char NewCrimeType;
+		char NewCivilType;
+      char DocumentType;
+      char DocumentAccessLevel;
+      char NewType;
+      char NewAccessLevel;
+      
 		System.out.println("Enter Law Firm Name : ");
 		String LawFirmName = input.next();
 		
@@ -24,8 +46,25 @@ public class TestLawFirm {
 		
 		
 		System.out.println("Enter The Maximm Number Of Lawyers  The Law Firm Can Have : ");
-		
-		int LawFirmSize = input.nextInt();
+      
+		while(true){
+      try{
+	   LawFirmSize = input.nextInt();
+        if (LawFirmSize < 0) {
+          throw new NegativeNumberException("Please enter a non-negative number for the maximum number of lawyers.");        }
+      break;
+      }catch(InputMismatchException e){
+        input.next(); 
+        System.out.println("Please enter a valid number for the maximum number of lawyers.");
+
+      }catch (NegativeNumberException e) {   
+       
+        System.out.println(e.getMessage());
+     }
+      
+
+      }
+
 		
 		
 		LawFirm LawFirm1 = new LawFirm( LawFirmName, LawFirmLocation , LawFirmYearFounded ,  LawFirmOwnerName , LawFirmSize );
@@ -87,7 +126,19 @@ public class TestLawFirm {
 				
 				
 				System.out.println("Enter Lawyer’s Experience Level ( Junior (J) , Senior (S) , Partner(P) ): ");
-				char LawyerExperienceLevel = input.next().charAt(0);
+            
+           while(true){
+				try {
+
+			    LawyerExperienceLevel = input.next().charAt(0);
+             break;
+            
+            }catch(StringIndexOutOfBoundsException e){
+             input.next(); 
+             System.out.println("Please enter the experience level ");
+
+            }
+            }
 				
 				System.out.println("Enter Lawyer’s Email Address : ");
 				String LawyerEmailAddress = input.next();
@@ -96,7 +147,19 @@ public class TestLawFirm {
 				String LawyerPhoneNumber = input.next();
 				
 				System.out.println("Enter Lawyer’s License Status ( Active (A) , Suspended (S) , Revoked (R) ): ");
-				char LawyerLicenseStatus = input.next().charAt(0);
+            
+            while(true){
+				try {
+			    LawyerLicenseStatus = input.next().charAt(0);
+             break;
+            
+            }catch(StringIndexOutOfBoundsException e){
+             input.next(); 
+             System.out.println("Please enter the Lawyer’s License Status ");
+      
+
+            }
+            }
 				
 				System.out.println("Enter Lawyer’s Bar Number : ");
 				String LawyerBarNumber = input.next();
@@ -106,14 +169,52 @@ public class TestLawFirm {
 				
 				
 				System.out.println("Enter The Maximum Number Of Cases That The Lawyer Can Handle : ");
-				int LawyerCasesSize = input.nextInt();
+            
+             while(true){
+				 try {
+            
+			   LawyerCasesSize = input.nextInt();
+            break;
+            
+            
+            }catch(InputMismatchException e){
+             input.next(); 
+             System.out.println("Please enter a valid number for the  Number Of Cases That The Lawyer Can Handle ");
+      
+
+            }
+            }
 				
 				System.out.println("Enter Lawyer’s Years Of Experience : ");
-				int LawyerYearsOfExperience = input.nextInt();
+            while(true){
+			  	try {
+            
+			   LawyerYearsOfExperience = input.nextInt();
+            break;
+            
+            }catch(InputMismatchException e){ 
+             input.next(); 
+             System.out.println("Please enter a valid number for the Lawyer’s Years Of Experience : ");
+      
+
+            }
+            }
+
 				
 				System.out.println("Enter Lawyer’s Base Salary : ");
-				double LawyerBaseSalary = input.nextDouble();
-				
+            while(true){
+				try {
+            
+			   LawyerBaseSalary = input.nextDouble();
+            break;
+            }catch(InputMismatchException e){ 
+             input.next(); 
+             System.out.println("Please enter a valid number for the Lawyer’s Base Salary : ");
+      
+
+            }
+            }
+            				
 				Lawyer NewLawyer = new Lawyer (LawyerName , LawyerExperienceLevel , LawyerEmailAddress , LawyerPhoneNumber , LawyerLicenseStatus , LawyerBarNumber , LawyerUniversityName , LawyerCasesSize , LawyerYearsOfExperience , LawyerBaseSalary );
 				
 				
@@ -203,7 +304,21 @@ public class TestLawFirm {
 										
 									case 2: 
 										System.out.println("Enter Lawyer’s New Experience Level ( Junior (J) , Senior (S) , Partner(P) ): ");
-										char LawyerNewExperienceLevel = input.next().charAt(0);
+                              
+                              while(true){
+			                    	try {
+                              
+									   LawyerNewExperienceLevel = input.next().charAt(0);
+                              break;
+                               }catch(StringIndexOutOfBoundsException e){
+                              input.next(); 
+                              System.out.println("Please enter the experience level ");
+                     
+               
+                           }
+                           }
+
+                              
 										LawyerToUpdate.setExperienceLevel(LawyerNewExperienceLevel);
 										System.out.println("Lawyer’s Experience Level Has Been Updated\n");
 										break;
@@ -224,7 +339,22 @@ public class TestLawFirm {
 										
 									case 5: 
 										System.out.println("Enter Lawyer’s New License Status ( Active (A) , Suspended (S) , Revoked (R) ): ");
-										char LawyerNewLicenseStatus = input.next().charAt(0);
+                              
+                              while(true){
+			                     try {
+
+									   LawyerNewLicenseStatus = input.next().charAt(0);
+                              break;
+                              
+                              
+                              }catch(StringIndexOutOfBoundsException e){
+                               input.next(); 
+                               System.out.println("Please enter the Lawyer’s New License Status ");
+                        
+                  
+                              }
+                              }
+                              
 										LawyerToUpdate.setLicenseStatus(LawyerNewLicenseStatus);
 										System.out.println("Lawyer’s License Status Has Been Updated\n");
 										break;
@@ -245,14 +375,37 @@ public class TestLawFirm {
 										
 									case 8: 
 										System.out.println("Enter Lawyer’s New Years Of Experience : ");
-										int LawyerNewYearsOfExperience = input.nextInt();
+                              while(true){
+			                     try {
+
+									   LawyerNewYearsOfExperience = input.nextInt();
+                              break;
+                              }catch(InputMismatchException e){ 
+                               input.next(); 
+                               System.out.println("Please enter a valid number for the  Lawyer’s New Years Of Experience : ");
+                  
+                              }
+                              }
+                              
 										LawyerToUpdate.setYearsOfExperience(LawyerNewYearsOfExperience);
 										System.out.println("Lawyer’s Years Of Experience Has Been Updated\n");
 										break;
 										
 									case 9: 
 										System.out.println("Enter Lawyer’s New Base Salary : ");
-										double LawyerNewBaseSalary = input.nextDouble();
+                              while(true){
+			                    	try {
+
+									   LawyerNewBaseSalary = input.nextDouble();
+                              break;
+                              }catch(InputMismatchException e){ 
+                               input.next(); 
+                               System.out.println("Please enter a valid number for the Lawyer’s New Base Salary : ");
+                        
+                  
+                              }
+                              }
+
 										LawyerToUpdate.setBaseSalary(LawyerNewBaseSalary);
 										System.out.println("Lawyer’s Base Salary Has Been Updated\n");
 										break;
@@ -293,21 +446,70 @@ public class TestLawFirm {
 					String CaseNumber = input.next();
 					
 					System.out.println("Enter Case Status ( Active (A), Pending (P), Lost (L), Won (W) ) : ");
-					char CaseStatus = input.next().charAt(0);
+               
+               while(true){
+			    	try {
+				   CaseStatus = input.next().charAt(0);
+               break;
+               }catch(StringIndexOutOfBoundsException e){
+                input.next(); 
+                System.out.println("Please enter the Case Status :  ");
+         
+               }
+               }
 					
 					System.out.println("Enter The Maximm Number Of Documents That The Case Can Have : ");
-					int CaseDocumentSize = input.nextInt();
+               
+               while(true){
+			      try {
+               
+				   CaseDocumentSize = input.nextInt();
+               break;
+               }catch(InputMismatchException e){ 
+                input.next(); 
+                System.out.println("Please enter a valid number for the  Documents That The Case Can Have : ");
+         
+
+               } 
+               }
 					
 					System.out.println("What Type of Case Is It ?");
 					System.out.println("1- Criminal Case");
 					System.out.println("2- Civil Case");
-					int CaseType = input.nextInt();
+               
+               while(true){
+				   try {
+
+				   CaseType = input.nextInt();
+               break;
+               }catch(InputMismatchException e){ 
+                input.next(); 
+                System.out.println("Please enter a valid number for the  Type of the Case ");
+         
+   
+               }
+
+               
+               }
 
 					
 					Client NewClient = new Client(ClientName, ClientDayOfBirth , ClientId , ClientPhoneNumber , ClientEmailAddress);
 					if (CaseType == 1) {
 						System.out.println("Enter Crime Type ( Cyber Crime (C), Money Laundering (M), Robbery (R), Homicide (H) ) : ");
-						char CrimeType = input.next().charAt(0);
+                  while(true){
+			        	try {
+
+						 CrimeType = input.next().charAt(0);
+                   break;
+               
+               }catch(StringIndexOutOfBoundsException e){
+                input.next(); 
+                System.out.println("Please enter the Crime Type ");
+         
+   
+               }
+               }
+
 					
 						Case NewCase = new Criminal(CaseNumber , CaseStatus , NewClient , CaseDocumentSize ,CrimeType) ;
 						if (LawyerToAssignCase.addCase(NewCase))
@@ -318,7 +520,18 @@ public class TestLawFirm {
 					else 
 						if(CaseType == 2) {
 							System.out.println("Enter Civil Type ( Family Law (F), Property Law (P), Contract Law (C) ) : ");
-							char CivilType = input.next().charAt(0);
+                     while(true){
+			          	try {
+							 CivilType = input.next().charAt(0);
+                     break;
+                  
+                  }catch(StringIndexOutOfBoundsException e){
+                   input.next(); 
+                   System.out.println("Please enter the Civil Type ");
+            
+      
+                  }}
+
 						
 							Case NewCase = new Civil(CaseNumber , CaseStatus , NewClient , CaseDocumentSize ,CivilType) ;
 							
@@ -392,7 +605,15 @@ public class TestLawFirm {
 						System.out.println("8- Update Client Email Address");
 						System.out.println("0- Finished Updating ");
 						
+                  try{
+                  
 						choice3 = input.nextInt();
+                  
+                  } catch (InputMismatchException e) {
+                  input.next();
+                  System.out.println("Please enter a valid integer choice.");
+                  choice3 = -1; // Set choice to an invalid value to loop again
+              }
 						
 						switch(choice3) {
 						case 1 :  
@@ -404,7 +625,19 @@ public class TestLawFirm {
 							
 						case 2 :
 							System.out.println("Enter New Case Status ( Active (A), Pending (P), Lost (L), Won (W) ) : ");
-							char NewCaseStatus = input.next().charAt(0);
+                     while(true){
+			           	try {
+
+							 NewCaseStatus = input.next().charAt(0);
+                      break;
+            
+                  }catch(StringIndexOutOfBoundsException e){
+                   input.next(); 
+                   System.out.println("Please enter the New Case Status ");
+            
+      
+                  }}
+      
 							caseToUpdate.setStatus(NewCaseStatus);
 							System.out.println("Case Status Has Been Updated\n");
 							break;
@@ -412,14 +645,40 @@ public class TestLawFirm {
 						case 3 :
 							if (caseToUpdate instanceof Criminal) {
 								System.out.println("Enter New Crime Type ( Cyber Crime (C), Money Laundering (M), Robbery (R), Homicide (H) ) : ");
-								char NewCrimeType = input.next().charAt(0);
+                         while(true){
+			            	try {
+								 NewCrimeType = input.next().charAt(0);
+                         break;
+                        
+                        }catch(StringIndexOutOfBoundsException e){
+                         input.next(); 
+                         System.out.println("Please enter the  New Crime Type  ");
+                  
+            
+                        }
+                        }
+
 								((Criminal)caseToUpdate).setCrimeTybe(NewCrimeType);
 								System.out.println("Crime Tybe Has Been Updated\n");
 							}
 							else
 								if (caseToUpdate instanceof Civil) {
 									System.out.println("Enter New Civil Type ( Family Law (F), Property Law (P), Contract Law (C) ) : ");
-									char NewCivilType = input.next().charAt(0);
+                           
+                            while(true){
+			                 	try {
+                          
+									 NewCivilType = input.next().charAt(0);
+                            break;
+            
+                     }catch(StringIndexOutOfBoundsException e){
+                      input.next(); 
+                      System.out.println("Please enter the  New Civil Type ");
+               
+         
+                     }}
+
+                           
 									((Civil)caseToUpdate).setCivilType(NewCivilType);
 									System.out.println("Civil Tybe Has Been Updated\n");
 								}
@@ -489,13 +748,39 @@ public class TestLawFirm {
 					String DocumentTitle = input.next();
 					
 					System.out.println("Enter Document’s Type ( Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E) ) :");
-					char DocumentType = input.next().charAt(0);
+               
+               while(true){
+			    	try {
+					 DocumentType = input.next().charAt(0);
+               
+                break;
+            
+            }catch(StringIndexOutOfBoundsException e){
+             input.next(); 
+             System.out.println("Please enter the  Document’s Type ");
+      
+
+            }}
+
 					
 					System.out.println("Enter Document’s Content : ");
 					String DocumentContent = input.next();
 					
 					System.out.println("Enter Document’s Access Level ( Public (P) , Confidential (C) , Restricted (R) ) :");
-					char DocumentAccessLevel = input.next().charAt(0);
+                while(true){
+			     	try {
+
+					 DocumentAccessLevel = input.next().charAt(0);
+               break;
+            
+               }catch(StringIndexOutOfBoundsException e){
+                input.next(); 
+                System.out.println("Please enter the Document’s Access Level ");
+         
+   
+               }
+               }
+   
 					
 					
 					
@@ -565,7 +850,16 @@ public class TestLawFirm {
 						System.out.println("5- Update Document’s Access Level");
 						System.out.println("0- Finished Updating ");
 						
+                  try{
+                  
 						choice4 = input.nextInt();
+                  break;
+                   } catch (InputMismatchException e) {
+                  input.next();
+                  System.out.println("Please enter a valid integer choice.");
+                  choice4 = -1; // Set choice to an invalid value to loop again
+              }
+
 						
 						switch(choice4) {
 						case 1 :  
@@ -584,7 +878,22 @@ public class TestLawFirm {
 						
 						case 3 :
 							System.out.println("Enter New Type ( Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E) ) : ");
-						    char NewType= input.next().charAt(0);
+                     
+                     while(true){
+			          	try {
+
+
+						     NewType= input.next().charAt(0);
+                      break;
+                  
+                  }catch(StringIndexOutOfBoundsException e){
+                   input.next(); 
+                   System.out.println("Please enter the New Type ");
+            
+      
+                  }
+                  }
+
 							documentToUpdate.setType(NewType);
 							System.out.println("Document’s Type Has Been Updated\n");
 							break;
@@ -599,7 +908,18 @@ public class TestLawFirm {
 							
 						case 5 :
 							System.out.println("Enter New Access Level ( Public (P) , Confidential (C) , Restricted (R) ) : ");
-						    char NewAccessLevel= input.next().charAt(0);
+                       while(true){
+			            	try {
+
+						     NewAccessLevel= input.next().charAt(0);
+                       break;
+                       }catch(StringIndexOutOfBoundsException e){
+                   input.next(); 
+                   System.out.println("Please enter the New Access Level  ");
+            
+      
+                  }}
+      
 							documentToUpdate.setAccessLevel(NewAccessLevel);
 							System.out.println("Document’s Access Level Has Been Updated\n");
 							break;
@@ -654,8 +974,8 @@ public class TestLawFirm {
 			
 		}while(choice!=0); //End Of Do While Loop
 		
-
+  
 		
 	}
 
-}
+}}
