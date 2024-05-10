@@ -1,15 +1,13 @@
 package LawFirmProject;
+public class NotRequiredInputException extends RuntimeException {
 
-public class IllegalArgumentException extends RuntimeException{
 
-
-    public IllegalArgumentException() {
+    public NotRequiredInputException() {
         super();
     }
 
 
-    public IllegalArgumentException(String message) {
+    public NotRequiredInputException(String message) {
         super(message);
     }
-
 }
