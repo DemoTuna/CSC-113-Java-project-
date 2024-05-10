@@ -1,8 +1,10 @@
 package LawFirmProject;
 
+import javax.swing.JOptionPane;
+import java.io.*;
 
-public class Lawyer {
-	
+public class Lawyer implements Serializable {
+    
 	//Attributes	
 	private String name ;
 	private char experienceLevel ;//Lawyer Experience Levels can be:  Junior (J) , Senior (S) , Partner(P)
@@ -43,25 +45,35 @@ public class Lawyer {
 	}
 	
 	//Method add a case 
-	public boolean addCase(Case c) {
+	public void addCase(Case c) {
 		if(numberOfCases < casesList.length ) {
 			casesList[numberOfCases++] = c;
-			UpdateCaseStatus(c,c.getStatus());
-			return true ;
+			//UpdateCaseStatus(c,c.getStatus());
+                         JOptionPane.showMessageDialog (null, "Case Is Added Successfully :)");
+			return  ;
 		}
-		else
-			return false; 
+                else{
+                    JOptionPane.showMessageDialog (null, "Failed To Add The Case :(");
+                  return ;  
+                }
+			
 		
 	}
 	//Method delete a case by case number  
-	public boolean deleteCase(String caseNum) {
+	public void deleteCase(String caseNum) {
 		for (int i = 0 ; i < numberOfCases ; i++ )
     		if (casesList[i].getCaseNumber().equals(caseNum))  {
     			casesList[i] = casesList[numberOfCases - 1];
     			casesList[--numberOfCases] = null ;
-    			return true ;
+                        JOptionPane.showMessageDialog (null, "Case Is Deleted Successfully :)");
+    			return  ;
     		}
-		return false ;
+                else
+                {
+                JOptionPane.showMessageDialog (null, "Failed To Delete The Case :(");    
+                 return  ;   
+                }
+		
 	}
 
 	//Method search for a case by case number 
@@ -153,7 +165,7 @@ public class Lawyer {
 	}
 	
 	//Method That Reassign All Cases To Another Lawyer
-	public boolean reassignCases(Lawyer replacementLawyer) {
+	/*public boolean reassignCases(Lawyer replacementLawyer) {
 		if (numberOfCases <= replacementLawyer.casesList.length - replacementLawyer.getNumberOfCases() ) {
 			for(int i = 0 ; i < numberOfCases ; i++) 
 				replacementLawyer.addCase(casesList[i]);
@@ -163,7 +175,7 @@ public class Lawyer {
 		}
 		
 		return false ;
-	}
+	}*/
 	
 	//Method That Display Lawyer Info Only 
 	public void DisplayLawyer() {
@@ -385,3 +397,4 @@ public class Lawyer {
 	
 
 }
+
