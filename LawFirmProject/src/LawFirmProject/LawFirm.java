@@ -1,8 +1,11 @@
+
 package LawFirmProject;
 
+import javax.swing.JOptionPane;
+import java.io.*;
+
 public class LawFirm {
-	
-	//Attributes
+    //Attributes
 	private String nameOfFirm;
 	private String location;
 	private String yearFounded;
@@ -21,16 +24,20 @@ public class LawFirm {
 		this.income = 0; 
 		lawyersList = new Lawyer [sizeOfLawyers];
 		numberOfLawyers = 0 ;
+                //loadFromFile();
 	}
 
 	// Method add a lawyer  
-	public boolean addLawyer(Lawyer lawyer) {
+	public void addLawyer(Lawyer lawyer) {
 		if(numberOfLawyers < lawyersList.length) {
 			lawyersList[numberOfLawyers++] = lawyer;
-			return true;
+                        JOptionPane.showMessageDialog (null, "Lawyer Is Added Successfully :)" ); 
+			return;
 		}
-		return false;
-
+                else{ 
+                    JOptionPane.showMessageDialog (null, "Failed To Add The Lawyer :(" ); 
+		return ;
+                }
 	}   
 
 	
@@ -68,16 +75,19 @@ public class LawFirm {
 		}
 		
 	// Method dismiss a Lawyer by bar Number
-	public boolean dismissLawyer(String barNum , Lawyer replacementLawyer){
+	public void dismissLawyer(String barNum){
 		for(int i = 0 ; i<numberOfLawyers ; i++)
 			if(lawyersList[i].getBarNumber().equals(barNum))
-				if(lawyersList[i].reassignCases(replacementLawyer)){
+				{
 					lawyersList[i] = lawyersList[numberOfLawyers-1];
 					lawyersList[--numberOfLawyers]= null ;
-				return true;
+                                        JOptionPane.showMessageDialog (null, "Lawyer Has been Dismissed Successfully :)");
+				return ;
 			}
-		return false; 
-	}
+                        else {
+                         JOptionPane.showMessageDialog (null, "Failed To Dismiss The Lawyer :(");   
+		return ; 
+	}}
 	
 	// Method That Promote A Lawyer If The Lawyer Deserve promotion
 	public void PromoteLawyer(Lawyer lawyer) {
@@ -166,6 +176,60 @@ public class LawFirm {
 		return "Name of firm is: " + nameOfFirm + "\nLocation: " + location + " Year founding: " + yearFounded + "\nOwner name:" + ownerName + "\nFirm Income:  " + calculateFirmIncome();
 		} 
    
+	public void save (String fileName){
+        try {
+            File out = new File(fileName);
+            FileOutputStream fos = new FileOutputStream(out);
+            ObjectOutputStream file = new ObjectOutputStream(fos);
+            
+            file.writeObject(nameOfFirm); 
+            file.writeObject(location); 
+            file.writeObject(ownerName); 
+            file.writeObject(nameOfFirm); 
+            file.writeDouble(income);
+            file.writeInt(numberOfLawyers);
+            
+            for(int i = 0 ; i < numberOfLawyers ; i++)
+            file.writeObject(lawyersList[i]);
+            
+            file.close();
+            
+        }
+        catch(IOException ex){
+            // JOptionPane.showMassageDialog(null,"Error while saveing file");
+        }
+    }
+    
+    public void load (String fileName){
+         try {
+            File file = new File(fileName);
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream in = new ObjectInputStream(fis);
+            
+            nameOfFirm = (String) in.readObject() ;
+            location = (String) in.readObject() ;
+            ownerName = (String) in.readObject() ;
+            nameOfFirm = (String) in.readObject() ;
+            income = in.readDouble() ;
+            int size = in.readInt() ;
+            
+            for(int i = 0 ; i < size ; i++){
+            Lawyer obj = (Lawyer)in.readObject() ;
+            this.addLawyer(obj);
+            }
+            
+            in.close();
+            
+        }
+        
+         catch(ClassNotFoundException ex){
+             // JOptionPane.showMassageDialog(null,"Error while reading object ");
+         }
+        catch(IOException ex){
+            // JOptionPane.showMassageDialog(null,"Error while loading file ");
+        }
+    }
+
    
 	/// setters & getters 
 	public String getNameOfFirm() {
@@ -209,4 +273,5 @@ public class LawFirm {
 	
 	
 	
+
 }
