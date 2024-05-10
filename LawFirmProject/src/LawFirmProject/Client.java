@@ -1,8 +1,10 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package LawFirmProject;
-
-
-public class Client {
-	
+import java.io.*;
+public class Client implements Serializable{
 	//Attributes
 	private String name ;
 	private String dayOfBirth ;
@@ -90,8 +92,4 @@ public class Client {
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
-	
-	
-	
-
 }
