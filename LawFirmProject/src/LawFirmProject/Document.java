@@ -1,8 +1,12 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package LawFirmProject;
+import java.io.*;
 
-public class Document {
-
-	//Attributes
+public class Document implements Serializable{
+   //Attributes
 	private String trackingNumber ;
 	private String title ;
 	private char type ;   // Document type : Legal Brief (B) , Contract (C) , Court File (T) , Evidence (E)  
@@ -161,8 +165,8 @@ public class Document {
 		public void setAccessLevel(char accessLevel) {
 			this.accessLevel = accessLevel;
 		}
+}
 	
 	
 	
 
-}
