@@ -1,62 +1,111 @@
+
 package LawFirmProject;
 
-public abstract class Case {
+import javax.swing.JOptionPane;
+import java.io.*;
 
-  // Attributes
-   protected String caseNumber;      
-   protected char status;      // Status of the case can be:  Active (A), Pending (P), Lost (L), Won (W) 
-   protected double legalExpenses;
-   protected Client client;
-   protected Document[] documentsList; // all arrays name 
-   protected int numberOfDocuments;
+public abstract class Case implements Serializable {
+
+	  // Attributes
+	   protected String caseNumber;      
+	   protected char status;      // Status of the case can be:  Active (A), Pending (P), Lost (L), Won (W) 
+	   protected double legalExpenses;
+	   protected Client client;
+	   protected Document[] documentsList; // all arrays name 
+	   protected int numberOfDocuments;
 
 
-	
-   //Parameterized constructor
-    public Case(String caseNumber, char status, Client client,int documentSize) {
-    this.caseNumber = caseNumber;
-    this.status = status;
-    this.client=client; 
-    this.documentsList=new Document[documentSize];
-    this.legalExpenses = 0; 
-    this.numberOfDocuments=0;
-   }
-   
-   // Method to add a document to the case
-   public boolean addDocument(Document document){
-     if(numberOfDocuments < documentsList.length){
-    	 documentsList[numberOfDocuments++] = document;
-         return true ;
-     }
-     
-     return false ;
-   
-   }
-   
-   // Method to search for a document by its tracking number
-   public Document searchForDocument(String trackingNum){
-     for(int i=0 ; i < numberOfDocuments ; i++){
-         if(documentsList[i].getTrackingNumber().equals(trackingNum))
-              return documentsList[i] ;
-         }
-             return null ;
-   }
-   
-   // Method to delete a document 
-   public boolean deleteDocument(String trackingNum){
-	   for(int i=0 ; i < numberOfDocuments ; i++)
-	         if(documentsList[i].getTrackingNumber().equals(trackingNum)) {
-	        	 documentsList[i] = documentsList[numberOfDocuments-1];
-	        	 documentsList[--numberOfDocuments] = null ;
-	        	 return true ; 
-           }
-	         return false ;
-   }
-   
-   //Method That Display Case Info Only Without Doc
-   public void DisplayCase() {
-	   String statusString = "" ;
-	    
+		
+	   //Parameterized constructor
+	    public Case(String caseNumber, char status, Client client,int documentSize) {
+	    this.caseNumber = caseNumber;
+	    this.status = status;
+	    this.client=client; 
+	    this.documentsList=new Document[documentSize];
+	    this.legalExpenses = 0; 
+	    this.numberOfDocuments=0;
+	   }
+	   
+	   // Method to add a document to the case
+	   public void addDocument(Document document){
+	     if(numberOfDocuments < documentsList.length){
+	    	 documentsList[numberOfDocuments++] = document;
+                       JOptionPane.showMessageDialog (null, "Lawyer Is Added Successfully :)" ); 
+			return;
+		}
+                else{ 
+                    JOptionPane.showMessageDialog (null, "Failed To Add The Lawyer :(" ); 
+		return ;
+                }
+	         
+	   
+	   }
+	   
+	   // Method to search for a document by its tracking number
+	   public Document searchForDocument(String trackingNum){
+	     for(int i=0 ; i < numberOfDocuments ; i++){
+	         if(documentsList[i].getTrackingNumber().equals(trackingNum))
+	              return documentsList[i] ;
+	         }
+	             return null ;
+	   }
+	   
+	   // Method to delete a document 
+	   public boolean deleteDocument(String trackingNum){
+		   for(int i=0 ; i < numberOfDocuments ; i++)
+		         if(documentsList[i].getTrackingNumber().equals(trackingNum)) {
+		        	 documentsList[i] = documentsList[numberOfDocuments-1];
+		        	 documentsList[--numberOfDocuments] = null ;
+		        	 return true ; 
+	           }
+		         return false ;
+	   }
+	   
+	   //Method That Display Case Info Only Without Doc
+	   public void DisplayCase() {
+		   String statusString = "" ;
+		    
+		     switch (status) {
+		        case 'A': case 'a' :
+		            statusString = "Active";
+		            break;
+		        case 'P': case 'p' :
+		            statusString = "Pending";
+		            break;
+		        case 'L': case 'l' :
+		            statusString = "Lost";
+		            break;
+		        case 'W': case 'w' :
+		            statusString = "Won";
+		            
+		            break;
+		        default:
+		            System.out.println("Invalid Status");
+		    }
+		     
+		   System.out.println("**********************************************");
+		   System.out.println("Case Number : " + caseNumber);
+		   System.out.println("Status : " + statusString);
+		   System.out.println("Number Of Documents : " + numberOfDocuments);
+		   
+	   }
+	   
+	   // Method That List All Documents For A Case 
+	   public void listAllDocument() {
+			for(int i = 0 ; i < numberOfDocuments; i++) {
+				documentsList[i].DisplayDocument(); 
+			}
+	   }
+	   
+	   public abstract double calculateLegalExpenses();     // Abstract method to calculate legal expenses (to be implemented by subclasses).
+	  
+	   
+	   
+	   // toString Method 
+	   public String toString() {
+		   
+	    String statusString = "" ;
+
 	     switch (status) {
 	        case 'A': case 'a' :
 	            statusString = "Active";
@@ -70,103 +119,58 @@ public abstract class Case {
 	        case 'W': case 'w' :
 	            statusString = "Won";
 	            
+	            
 	            break;
 	        default:
 	            System.out.println("Invalid Status");
 	    }
-	     
-	   System.out.println("**********************************************");
-	   System.out.println("Case Number : " + caseNumber);
-	   System.out.println("Status : " + statusString);
-	   System.out.println("Number Of Documents : " + numberOfDocuments);
+	       
+
+	    return "**********************************************\n"+"Case Number : " + caseNumber + "\nStatus : " + statusString ;
+	    
+	}
 	   
-   }
-   
-   // Method That List All Documents For A Case 
-   public void listAllDocument() {
-		for(int i = 0 ; i < numberOfDocuments; i++) {
-			documentsList[i].DisplayDocument(); 
-		}
-   }
-   
-   public abstract double calculateLegalExpenses();     // Abstract method to calculate legal expenses (to be implemented by subclasses).
-  
-   
-   
-   // toString Method 
-   public String toString() {
-	   
-    String statusString = "" ;
+	   // setters & getters
+	   public String getCaseNumber() {
+		return caseNumber;
+	}
 
-     switch (status) {
-        case 'A': case 'a' :
-            statusString = "Active";
-            break;
-        case 'P': case 'p' :
-            statusString = "Pending";
-            break;
-        case 'L': case 'l' :
-            statusString = "Lost";
-            break;
-        case 'W': case 'w' :
-            statusString = "Won";
-            
-            
-            break;
-        default:
-            System.out.println("Invalid Status");
-    }
-       
+	   public void setCaseNumber(String caseNumber) {
+		this.caseNumber = caseNumber;
+	}
 
-    return "**********************************************\n"+"Case Number : " + caseNumber + "\nStatus : " + statusString ;
-    
-}
-   
-   // setters & getters
-   public String getCaseNumber() {
-	return caseNumber;
-}
+	   public char getStatus() {
+		return status;
+	}
 
-   public void setCaseNumber(String caseNumber) {
-	this.caseNumber = caseNumber;
-}
+	   public void setStatus(char status) {
+		this.status = status;
+	}
 
-   public char getStatus() {
-	return status;
-}
+	   public double getLegalExpenses() {
+		return legalExpenses;
+	}
 
-   public void setStatus(char status) {
-	this.status = status;
-}
+	   public void setLegalExpenses(double legalExpenses) {
+		this.legalExpenses = legalExpenses;
+	}
 
-   public double getLegalExpenses() {
-	return legalExpenses;
-}
+	   public Client getClient() {
+		return client;
+	}
 
-   public void setLegalExpenses(double legalExpenses) {
-	this.legalExpenses = legalExpenses;
-}
+	   public void setClient(Client client) {
+		this.client = client;
+	}
 
-   public Client getClient() {
-	return client;
-}
+	   public int getNumberOfDocuments() {
+		return numberOfDocuments;
+	}
 
-   public void setClient(Client client) {
-	this.client = client;
+	   public void setNumberOfDocuments(int numberOfDocuments) {
+		this.numberOfDocuments = numberOfDocuments;
+	}
+	 
+	       
+	           
 }
-
-   public int getNumberOfDocuments() {
-	return numberOfDocuments;
-}
-
-   public void setNumberOfDocuments(int numberOfDocuments) {
-	this.numberOfDocuments = numberOfDocuments;
-}
- 
-       
-           
-        
-    }
-    
-        
-  
