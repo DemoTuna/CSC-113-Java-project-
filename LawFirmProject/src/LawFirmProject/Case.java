@@ -30,11 +30,11 @@ public abstract class Case implements Serializable {
 	   public void addDocument(Document document){
 	     if(numberOfDocuments < documentsList.length){
 	    	 documentsList[numberOfDocuments++] = document;
-                       JOptionPane.showMessageDialog (this, "Lawyer Is Added Successfully :)" ); 
+                       JOptionPane.showMessageDialog (null, "Lawyer Is Added Successfully :)" ); 
 			return;
 		}
                 else{ 
-                    JOptionPane.showMessageDialog (this, "Failed To Add The Lawyer :(" ); 
+                    JOptionPane.showMessageDialog (null, "Failed To Add The Lawyer :(" ); 
 		return ;
                 }
 	         
