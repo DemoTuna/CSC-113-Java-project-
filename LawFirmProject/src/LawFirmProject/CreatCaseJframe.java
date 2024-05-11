@@ -293,7 +293,7 @@ else if(jRadioButton4.isSelected())
 if (jRadioButton5.isSelected()){
  CrimeType = jTextField9.getText().charAt(0);
  if(CrimeType!= 'c' && CrimeType!= 'C' && CrimeType !='m'&& CrimeType !='M' && CrimeType !='r'&& CrimeType !='R' && CrimeType !='h'&& CrimeType !='H'){
-     JOptionPane.showMessageDialog (null,"Invaled Crime Type ");
+     JOptionPane.showMessageDialog (this,"Invaled Crime Type ");
      return;}
  Case NewCase = new Criminal(CaseNumber , CaseStatus , NewClient , CaseDocumentSize ,CrimeType);
  double LegalExpenses = NewCase.calculateLegalExpenses() ;
@@ -302,7 +302,7 @@ if (jRadioButton5.isSelected()){
 else if (jRadioButton6.isSelected()){
 CrimeType = jTextField10.getText().charAt(0);
  if(CrimeType!= 'c' && CrimeType!= 'C' && CrimeType !='f'&& CrimeType !='F' && CrimeType !='P'&& CrimeType !='p' ){
-     JOptionPane.showMessageDialog (null,"Invaled civil Type ");
+     JOptionPane.showMessageDialog (this,"Invaled civil Type ");
      return;
  }
 Case NewCase = new Civil(CaseNumber , CaseStatus , NewClient , CaseDocumentSize ,CrimeType);
@@ -328,11 +328,11 @@ LawyerToAssignCase.addCase(NewCase);
 				   
                break;
                }catch(NumberFormatException e){ 
-                   JOptionPane.showMessageDialog (null, "Please enter a valid number for the  Documents That The Case Can Have" );
+                   JOptionPane.showMessageDialog (this, "Please enter a valid number for the  Documents That The Case Can Have" );
                    break;
 }
       catch(NullPointerException e) {
-    JOptionPane.showMessageDialog (null, "can't Find The Lawyer")  ;
+    JOptionPane.showMessageDialog (this, "can't Find The Lawyer")  ;
     break;
     
                }}
