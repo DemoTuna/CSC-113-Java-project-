@@ -31,11 +31,11 @@ public class LawFirm {
 	public void addLawyer(Lawyer lawyer) {
 		if(numberOfLawyers < lawyersList.length) {
 			lawyersList[numberOfLawyers++] = lawyer;
-                        JOptionPane.showMessageDialog (null, "Lawyer Is Added Successfully :)" ); 
+                        JOptionPane.showMessageDialog (this, "Lawyer Is Added Successfully :)" ); 
 			return;
 		}
                 else{ 
-                    JOptionPane.showMessageDialog (null, "Failed To Add The Lawyer :(" ); 
+                    JOptionPane.showMessageDialog (this, "Failed To Add The Lawyer :(" ); 
 		return ;
                 }
 	}   
@@ -81,11 +81,11 @@ public class LawFirm {
 				{
 					lawyersList[i] = lawyersList[numberOfLawyers-1];
 					lawyersList[--numberOfLawyers]= null ;
-                                        JOptionPane.showMessageDialog (null, "Lawyer Has been Dismissed Successfully :)");
+                                        JOptionPane.showMessageDialog (this, "Lawyer Has been Dismissed Successfully :)");
 				return ;
 			}
                         else {
-                         JOptionPane.showMessageDialog (null, "Failed To Dismiss The Lawyer :(");   
+                         JOptionPane.showMessageDialog (this, "Failed To Dismiss The Lawyer :(");   
 		return ; 
 	}}
 	
@@ -196,7 +196,7 @@ public class LawFirm {
             
         }
         catch(IOException ex){
-           JOptionPane.showMessageDialog(null,"Error while saveing file");
+           JOptionPane.showMessageDialog(this,"Error while saveing file");
         }
     }
     
@@ -223,10 +223,10 @@ public class LawFirm {
         }
         
          catch(ClassNotFoundException ex){
-            JOptionPane.showMessageDialog (null, "Error while reading object ");
+            JOptionPane.showMessageDialog (this, "Error while reading object ");
          }
         catch(IOException ex){
-           JOptionPane.showMessageDialog(null,"Error while loading file ");
+           JOptionPane.showMessageDialog(this,"Error while loading file ");
         }
     }
 
