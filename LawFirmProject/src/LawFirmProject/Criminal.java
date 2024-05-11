@@ -1,6 +1,6 @@
 
 package LawFirmProject;
-
+import javax.swing.JOptionPane;
 public class Criminal extends Case {
 	
 	// Attribute
