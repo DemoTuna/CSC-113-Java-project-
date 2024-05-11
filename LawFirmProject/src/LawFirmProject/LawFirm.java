@@ -24,7 +24,7 @@ public class LawFirm {
 		this.income = 0; 
 		lawyersList = new Lawyer [sizeOfLawyers];
 		numberOfLawyers = 0 ;
-                //loadFromFile();
+                
 	}
 
 	// Method add a lawyer  
@@ -196,7 +196,7 @@ public class LawFirm {
             
         }
         catch(IOException ex){
-            // JOptionPane.showMassageDialog(null,"Error while saveing file");
+           JOptionPane.showMessageDialog(null,"Error while saveing file");
         }
     }
     
@@ -223,10 +223,10 @@ public class LawFirm {
         }
         
          catch(ClassNotFoundException ex){
-             // JOptionPane.showMassageDialog(null,"Error while reading object ");
+            JOptionPane.showMessageDialog (null, "Error while reading object ");
          }
         catch(IOException ex){
-            // JOptionPane.showMassageDialog(null,"Error while loading file ");
+           JOptionPane.showMessageDialog(null,"Error while loading file ");
         }
     }
 
