@@ -31,7 +31,7 @@ public class Criminal extends Case {
        	 	legalExpenses = 50000 ;
           break;
         default:
-        JOptionPane.showMessageDialog (null,"Invaled Crime Type ");
+        JOptionPane.showMessageDialog (this,"Invaled Crime Type ");
 
         } 	
     	
