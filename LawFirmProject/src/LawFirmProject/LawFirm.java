@@ -173,60 +173,45 @@ public class LawFirm {
 		return "Name of firm is: " + nameOfFirm + "\nLocation: " + location + " Year founding: " + yearFounded + "\nOwner name:" + ownerName + "\nFirm Income:  " + calculateFirmIncome();
 		} 
    
-	public void save (String fileName){
-        try {
-            File out = new File(fileName);
-            FileOutputStream fos = new FileOutputStream(out);
-            ObjectOutputStream file = new ObjectOutputStream(fos);
-            
-            file.writeObject(nameOfFirm); 
-            file.writeObject(location); 
-            file.writeObject(ownerName); 
-            file.writeObject(nameOfFirm); 
-            file.writeDouble(income);
-            file.writeInt(numberOfLawyers);
-            
-            for(int i = 0 ; i < numberOfLawyers ; i++)
-            file.writeObject(lawyersList[i]);
-            
-            file.close();
-            
-        }
-        catch(IOException ex){
-           JOptionPane.showMessageDialog(null,"Error while saveing file");
-        }
-    }
-    
-    public void load (String fileName){
-         try {
-            File file = new File(fileName);
-            FileInputStream fis = new FileInputStream(file);
-            ObjectInputStream in = new ObjectInputStream(fis);
-            
-            nameOfFirm = (String) in.readObject() ;
-            location = (String) in.readObject() ;
-            ownerName = (String) in.readObject() ;
-            nameOfFirm = (String) in.readObject() ;
-            income = in.readDouble() ;
-            int size = in.readInt() ;
-            
-            for(int i = 0 ; i < size ; i++){
-            Lawyer obj = (Lawyer)in.readObject() ;
-            this.addLawyer(obj);
+ public void save (String fileName){
+            try {
+                File out = new File(fileName);
+                FileOutputStream fos = new FileOutputStream(out);
+                ObjectOutputStream file = new ObjectOutputStream(fos);
+                
+                file.writeObject(LawFirm1); 
+                
+                
+                file.close();
+                
             }
-            
-            in.close();
-            
+            catch(IOException ex){
+                // JOptionPane.showMassageDialog(null,"Error while saveing file");
+            }
         }
         
-         catch(ClassNotFoundException ex){
-            JOptionPane.showMessageDialog (null, "Error while reading object ");
-         }
-        catch(IOException ex){
-           JOptionPane.showMessageDialog(null,"Error while loading file ");
+    
+     public void load (String fileName){
+             try {
+                File file = new File(fileName);
+                FileInputStream fis = new FileInputStream(file);
+                ObjectInputStream in = new ObjectInputStream(fis);
+                
+                LawFirm1 = (LawFirm) in.readObject() ;
+                
+                }
+                
+                in.close();
+                
+            }
+            
+             catch(ClassNotFoundException ex){
+                 // JOptionPane.showMassageDialog(null,"Error while reading object ");
+             }
+            catch(IOException ex){
+                // JOptionPane.showMassageDialog(null,"Error while loading file ");
+            }
         }
-    }
-
    
 	/// setters & getters 
 	public String getNameOfFirm() {
