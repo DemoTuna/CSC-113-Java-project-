@@ -32,7 +32,7 @@ public class Civil extends Case{
        	 	legalExpenses = 11000 ;
           break;
         default:
-           JOptionPane.showMessageDialog (null,"Invaled civil Type ");
+           JOptionPane.showMessageDialog (this,"Invaled civil Type ");
         } 	
 
     	if (status == 'P' || status == 'p' || status == 'A' || status == 'a' )
