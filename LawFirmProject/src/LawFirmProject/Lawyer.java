@@ -49,11 +49,11 @@ public class Lawyer implements Serializable {
 		if(numberOfCases < casesList.length ) {
 			casesList[numberOfCases++] = c;
 			//UpdateCaseStatus(c,c.getStatus());
-                         JOptionPane.showMessageDialog (null, "Case Is Added Successfully :)");
+                         JOptionPane.showMessageDialog (this, "Case Is Added Successfully :)");
 			return  ;
 		}
                 else{
-                    JOptionPane.showMessageDialog (null, "Failed To Add The Case :(");
+                    JOptionPane.showMessageDialog (this, "Failed To Add The Case :(");
                   return ;  
                 }
 			
@@ -65,12 +65,12 @@ public class Lawyer implements Serializable {
     		if (casesList[i].getCaseNumber().equals(caseNum))  {
     			casesList[i] = casesList[numberOfCases - 1];
     			casesList[--numberOfCases] = null ;
-                        JOptionPane.showMessageDialog (null, "Case Is Deleted Successfully :)");
+                        JOptionPane.showMessageDialog (this, "Case Is Deleted Successfully :)");
     			return  ;
     		}
                 else
                 {
-                JOptionPane.showMessageDialog (null, "Failed To Delete The Case :(");    
+                JOptionPane.showMessageDialog (this, "Failed To Delete The Case :(");    
                  return  ;   
                 }
 		
