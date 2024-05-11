@@ -196,7 +196,7 @@ public class LawFirm {
             
         }
         catch(IOException ex){
-           JOptionPane.showMessageDialog(this,"Error while saveing file");
+           JOptionPane.showMessageDialog(null,"Error while saveing file");
         }
     }
     
@@ -223,10 +223,10 @@ public class LawFirm {
         }
         
          catch(ClassNotFoundException ex){
-            JOptionPane.showMessageDialog (this, "Error while reading object ");
+            JOptionPane.showMessageDialog (null, "Error while reading object ");
          }
         catch(IOException ex){
-           JOptionPane.showMessageDialog(this,"Error while loading file ");
+           JOptionPane.showMessageDialog(null,"Error while loading file ");
         }
     }
 
