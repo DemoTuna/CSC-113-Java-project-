@@ -31,11 +31,11 @@ public class LawFirm {
 	public void addLawyer(Lawyer lawyer) {
 		if(numberOfLawyers < lawyersList.length) {
 			lawyersList[numberOfLawyers++] = lawyer;
-                        JOptionPane.showMessageDialog (this, "Lawyer Is Added Successfully :)" ); 
+                        JOptionPane.showMessageDialog (null, "Lawyer Is Added Successfully :)" ); 
 			return;
 		}
                 else{ 
-                    JOptionPane.showMessageDialog (this, "Failed To Add The Lawyer :(" ); 
+                    JOptionPane.showMessageDialog (null, "Failed To Add The Lawyer :(" ); 
 		return ;
                 }
 	}   
@@ -81,11 +81,11 @@ public class LawFirm {
 				{
 					lawyersList[i] = lawyersList[numberOfLawyers-1];
 					lawyersList[--numberOfLawyers]= null ;
-                                        JOptionPane.showMessageDialog (this, "Lawyer Has been Dismissed Successfully :)");
+                                        JOptionPane.showMessageDialog (null, "Lawyer Has been Dismissed Successfully :)");
 				return ;
 			}
                         else {
-                         JOptionPane.showMessageDialog (this, "Failed To Dismiss The Lawyer :(");   
+                         JOptionPane.showMessageDialog (null, "Failed To Dismiss The Lawyer :(");   
 		return ; 
 	}}
 	
