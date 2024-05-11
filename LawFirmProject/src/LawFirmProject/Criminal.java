@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package LawFirmProject;
 
 public class Criminal extends Case {
@@ -34,7 +31,8 @@ public class Criminal extends Case {
        	 	legalExpenses = 50000 ;
           break;
         default:
-          System.out.println("Invaled Crime Type ");
+        JOptionPane.showMessageDialog (null,"Invaled Crime Type ");
+
         } 	
     	
     	if (status == 'P' ||  status == 'p' || status == 'A' || status == 'a')
