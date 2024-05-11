@@ -320,19 +320,19 @@ Lawyer NewLawyer;
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {
        if (jTextField1.getText().isEmpty()) {
-                JOptionPane.showMessageDialog (null,"Please enter the Lawyer's Name.");
+                JOptionPane.showMessageDialog (this,"Please enter the Lawyer's Name.");
        }
     }
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {
         if (jTextField3.getText().isEmpty()) {
-                JOptionPane.showMessageDialog (null,"Please enter the Lawyer's Email address.");
+                JOptionPane.showMessageDialog (this,"Please enter the Lawyer's Email address.");
        }
     }
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {
          if (jTextField5.getText().isEmpty()) {
-                JOptionPane.showMessageDialog (null,"Please enter the Lawyer's phone number.");
+                JOptionPane.showMessageDialog (this,"Please enter the Lawyer's phone number.");
        }
     }
 
@@ -367,12 +367,12 @@ MainJframe.LawFirm1.save("LawFirm1.txt" );
             
             
              } catch (StringIndexOutOfBoundsException ex) {
-               JOptionPane.showMessageDialog (null,"Please enter the experience level.");
+               JOptionPane.showMessageDialog (this,"Please enter the experience level.");
                return;
             }
                catch (NotRequiredInputException ex) {   
           
-                JOptionPane.showMessageDialog (null,ex.getMessage());
+                JOptionPane.showMessageDialog (this,ex.getMessage());
                return;
                 
                 }
@@ -434,10 +434,10 @@ double LawyerBaseSalary = Double.parseDouble(BaseSalary);
         try {
             String MaxCases = jTextField6.getText();
             int Max = Integer.parseInt(MaxCases) ;
-JOptionPane.showMessageDialog (null, "The Maximum Number Of cases That The Lawyer Can Handle was saved");
+JOptionPane.showMessageDialog (this, "The Maximum Number Of cases That The Lawyer Can Handle was saved");
         }
         catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog (null, "Error! \nPlease enter a valid number for the  Number Of Cases That The Lawyer Can Handle");
+            JOptionPane.showMessageDialog (this, "Error! \nPlease enter a valid number for the  Number Of Cases That The Lawyer Can Handle");
         }
     }
 
@@ -447,10 +447,10 @@ JOptionPane.showMessageDialog (null, "The Maximum Number Of cases That The Lawye
         try {
             String YearOfExperince = jTextField7.getText();
             int Experince = Integer.parseInt(YearOfExperince) ;
-JOptionPane.showMessageDialog (null, "The Lawyer’s Years Of Experience was saved");
+JOptionPane.showMessageDialog (this, "The Lawyer’s Years Of Experience was saved");
         }
         catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog (null, "Error! \nPlease enter a valid number for the Lawyer’s Years Of Experience"); }
+            JOptionPane.showMessageDialog (this, "Error! \nPlease enter a valid number for the Lawyer’s Years Of Experience"); }
     }
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -460,10 +460,10 @@ JOptionPane.showMessageDialog (null, "The Lawyer’s Years Of Experience was sav
         try {
             String BaseSalary = jTextField8.getText();
             int Salary = Integer.parseInt(BaseSalary) ;
- JOptionPane.showMessageDialog (null, "The Lawyer’s base salary was saved");
+ JOptionPane.showMessageDialog (this, "The Lawyer’s base salary was saved");
         }
         catch(NumberFormatException ex){
-            JOptionPane.showMessageDialog (null, "Error! \nPlease enter a valid number for the Base Salary");
+            JOptionPane.showMessageDialog (this, "Error! \nPlease enter a valid number for the Base Salary");
         }
     }
 
