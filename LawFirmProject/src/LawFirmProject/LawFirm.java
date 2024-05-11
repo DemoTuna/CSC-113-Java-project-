@@ -75,19 +75,16 @@ public class LawFirm {
 		}
 		
 	// Method dismiss a Lawyer by bar Number
-	public void dismissLawyer(String barNum){
+	public boolean dismissLawyer(String barNum , Lawyer replacementLawyer){
 		for(int i = 0 ; i<numberOfLawyers ; i++)
 			if(lawyersList[i].getBarNumber().equals(barNum))
-				{
+				if(lawyersList[i].reassignCases(replacementLawyer)){
 					lawyersList[i] = lawyersList[numberOfLawyers-1];
 					lawyersList[--numberOfLawyers]= null ;
-                                        JOptionPane.showMessageDialog (null, "Lawyer Has been Dismissed Successfully :)");
-				return ;
+				return true;
 			}
-                        else {
-                         JOptionPane.showMessageDialog (null, "Failed To Dismiss The Lawyer :(");   
-		return ; 
-	}}
+		return false; 
+	}
 	
 	// Method That Promote A Lawyer If The Lawyer Deserve promotion
 	public void PromoteLawyer(Lawyer lawyer) {
